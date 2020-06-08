@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PageTabComponent } from './page-tab/page-tab.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageTabComponent
   ],
   imports: [
     BrowserModule,
