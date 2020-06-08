@@ -1,0 +1,47 @@
+:root {
+    --content-padding: 2%;
+}
+
+:host { 
+    display: flex;
+    flex-direction: column;
+}
+
+#tabset-wrapper {
+    display: flex;
+}
+
+.page-tab, #tab-header {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.page-tab  {
+    padding-top: 0.2%;
+    padding-bottom: 0.2%;
+    border: 0.5px black solid;
+    border-radius: 10px 10px 0 0;
+    background-color: blueviolet;
+}
+
+.page-tab:hover {
+    cursor: pointer;
+}
+
+.page-tab span {
+    font-size: 13px;
+}
+
+#tab-header {
+    display: flex;
+    align-items: center;
+    padding: 1% 2%;
+    height: 50px;
+    background-color: blue;
+    border: 0.5px black solid;
+}
+
+#tab-name {
+    font-size: 20px;
+    font-weight: 700;
+}

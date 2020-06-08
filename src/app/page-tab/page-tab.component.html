@@ -1,5 +1,11 @@
-<div *ngFor="let tab of tab_names">
-    <span>{{ tab }}</span>    
+<div id="tabset-wrapper">
+    <div class="page-tab" *ngFor="let tab of tab_names">
+        <span>{{ tab }}</span>    
+    </div>    
 </div>
+
+<div id="tab-header">
+   <span id="tab-name">{{ selected_tab }}</span>
+</div> <!-- end tab header -->
 
 

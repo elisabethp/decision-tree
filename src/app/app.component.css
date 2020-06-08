@@ -1,0 +1,46 @@
+:host /* #site-wrapper */ { 
+    display: flex;
+    flex-direction: column;    
+    width: 100%;
+    height: 100vh;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    background-color: aquamarine;
+    width: calc(100% - 4%);
+    height: 100px;
+    padding: 1% 2%;
+}
+
+#app-graphic-wrapper {
+    width: 300px;
+    height: auto;
+    background-color: blue;
+}
+
+#user-info-wrapper {
+    width: 300px;
+    height: auto;
+    background-color: blueviolet;
+}
+
+#main-content-wrapper {
+    background-color: bisque;
+    height: 100%;
+    padding: 0.5% 2%;
+}
+
+#main-content { 
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+#footer {
+    width: calc(100% - 1%);
+    height: 50px;
+    padding: 0.5%;
+    background-color: black;
+}

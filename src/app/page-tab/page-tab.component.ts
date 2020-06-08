@@ -7,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageTabComponent implements OnInit {
 
-  tab_names = ["Global Parameters", "Job Parameters", "All Jobs"]
+  tab_names = null;
+  selected_tab = null;
 
   constructor() { 
 
+    this.tab_names = ["Global Parameters", "Job Parameters", "All Jobs"];
+    this.selected_tab = this.tab_names[0];
+
+    for (var i = 0; i < this.tab_names.length; i++) {
+      this.tab_names[i] = this.tab_names[i].toUpperCase()
+    }
     
 
   }
