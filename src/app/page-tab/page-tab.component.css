@@ -12,8 +12,8 @@
 }
 
 .page-tab, #tab-header {
-    padding-left: 2%;
-    padding-right: 2%;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
 }
 
 .page-tab  {
@@ -29,9 +29,9 @@
 
 .page-tab.selected {
     outline: none;
-    -webkit-box-shadow: inset 3px 3px 5px #c1c1c1;
-        -moz-box-shadow: inset 3px 3px 5px #c1c1c1;
-            box-shadow: inset 3px 3px 5px #c1c1c1;
+    -webkit-box-shadow: inset 0px 3px 5px #c1c1c1;
+        -moz-box-shadow: inset 0px 3px 5px #c1c1c1;
+            box-shadow: inset 0px 3px 5px #c1c1c1;
 }
 
 .page-tab:not(.selected) {
@@ -40,15 +40,15 @@
 
 .page-tab span {
     font-size: 13px;
+    font-weight: 700;
 }
 
 #tab-header {
     display: flex;
     align-items: center;
-    padding: 1% 2%;
+    padding: 1% 1.5%;
     height: 50px;
-    background-color: blue;
-    border: 0.5px black solid;
+    background-color: #e5e5e5;
 }
 
 #tab-name {
