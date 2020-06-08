@@ -1,5 +1,7 @@
 <div id="tabset-wrapper">
-    <div class="page-tab" *ngFor="let tab of tab_names">
+    <div *ngFor="let tab of tab_names; first as isFirst" 
+        class="page-tab"
+        [class.selected]= "isFirst">
         <span>{{ tab }}</span>    
     </div>    
 </div>
