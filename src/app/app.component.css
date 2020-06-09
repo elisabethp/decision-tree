@@ -8,10 +8,12 @@
 #header {
     display: flex;
     justify-content: space-between;
-    background-color: C4C4C4;
+    background-color: #E8E8E8;
     width: calc(100% - 5%);
     height: 100px;
-    padding: 1% 2.5%;
+    padding: 0.5% 2.5%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .16), 0 2px 5px rgba(0, 0, 0, .26);
+	border: 1px solid #eee;
 }
 
 #app-graphic-wrapper {
@@ -32,7 +34,7 @@
 #main-content-wrapper {
     background-color: C4C4C4;
     height: 100%;
-    padding: 1% 2.5%;
+    padding: 2% 2.5%;
 }
 
 #main-content { 
