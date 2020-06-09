@@ -8,16 +8,19 @@
 #header {
     display: flex;
     justify-content: space-between;
-    background-color: aquamarine;
-    width: calc(100% - 4%);
+    background-color: C4C4C4;
+    width: calc(100% - 5%);
     height: 100px;
-    padding: 1% 2%;
+    padding: 1% 2.5%;
 }
 
 #app-graphic-wrapper {
     width: 300px;
     height: auto;
-    background-color: blue;
+}
+
+#app-graphic-wrapper img {
+    height: 100%;
 }
 
 #user-info-wrapper {
@@ -27,13 +30,13 @@
 }
 
 #main-content-wrapper {
-    background-color: bisque;
+    background-color: C4C4C4;
     height: 100%;
-    padding: 0.5% 2%;
+    padding: 1% 2.5%;
 }
 
 #main-content { 
-    background-color: white;
+    background-color: C4C4C4;
     width: 100%;
     height: 100%;
 }
