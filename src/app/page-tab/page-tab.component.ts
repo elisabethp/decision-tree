@@ -12,17 +12,35 @@ export class PageTabComponent implements OnInit {
 
   constructor() { 
 
-    this.tab_names = ["Global Parameters", "Job Parameters", "All Jobs"];
+    this.tab_names = ["Global System Parameters", "Job Parameters", "All Jobs"];
     this.selected_tab = this.tab_names[0];
-
-    for (var i = 0; i < this.tab_names.length; i++) {
-      this.tab_names[i] = this.tab_names[i].toUpperCase()
-    }
     
+  }
+
+  switchTabs(event) {
+    var target = event.target;
+
+    if (target.tagName == "SPAN") {
+      target = target.parentElement;
+    }
+
+    //add selected style to selected tab
+    var oldSelectedTab = document.getElementsByClassName('selected-page-tab')[0];
+    oldSelectedTab.classList.remove('selected-page-tab');
+    target.classList.add('selected-page-tab')
+
+    //update tab header title
+    var selectedIndex = target.getAttribute('data-tab-index');    
+    this.selected_tab = this.tab_names[selectedIndex];
+
+    //update page contents
+    this.updatePage();
+  }
+
+  updatePage() {
 
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

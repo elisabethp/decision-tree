@@ -21,20 +21,21 @@
     padding-bottom: 0.2%;
     border-radius: 10px 10px 0 0;
     background-color: #e5e5e5;
+    text-transform: uppercase;
 }
 
 .page-tab:hover {
     cursor: pointer;
 }
 
-.page-tab.selected {
+.page-tab.selected-page-tab {
     outline: none;
     -webkit-box-shadow: inset 0px 3px 5px #c1c1c1;
         -moz-box-shadow: inset 0px 3px 5px #c1c1c1;
             box-shadow: inset 0px 3px 5px #c1c1c1;
 }
 
-.page-tab:not(.selected) {
+.page-tab:not(.selected-page-tab) {
     border: 0.1px #d4d4 solid;
 }
 
