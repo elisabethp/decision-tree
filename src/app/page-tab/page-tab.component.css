@@ -19,6 +19,7 @@
 .page-tab  {
     padding-top: 0.3%;
     padding-bottom: 0.2%;
+    margin-right: 4px;
     border-radius: 10px 10px 0 0;
     background-color: #E8E8E8;
     text-transform: uppercase;
