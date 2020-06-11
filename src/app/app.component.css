@@ -13,6 +13,8 @@
     height: 100px;
     padding: 0.5% 2.5%;
     /*box-shadow: 0 2px 10px rgba(0, 0, 0, .16), 0 2px 5px rgba(0, 0, 0, .26);*/
+    border-bottom: 0.1px #DCDCDC solid;
+
 }
 
 #app-graphic-wrapper {
@@ -25,9 +27,30 @@
 }
 
 #user-info-wrapper {
+    display: flex;
+    flex-direction: column;
     width: 300px;
     height: auto;
-    background-color: blueviolet;
+    margin-top: 1%;
+}
+
+#user-info-wrapper div {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 15px;
+}
+
+#logout {
+    margin-top: 2%;
+}
+
+#logout a {
+    color: black;
+    text-decoration: none;
+}
+
+#user-role, #user-info-wrapper a {
+    font-weight: 700;
 }
 
 #main-content-wrapper {
@@ -62,5 +85,6 @@
     width: calc(100% - 1%);
     height: 50px;
     padding: 0.5%;
-    background-color: black;
+    border-top: 0.1px #DCDCDC solid;
+
 }
