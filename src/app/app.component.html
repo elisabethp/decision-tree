@@ -17,7 +17,7 @@
   <div id="main-content-wrapper">
     <div id="main-content">
       <div id="nav-wrapper">
-          <app-page-tab></app-page-tab>
+          <app-page-tab (tabTrigger)="navigate($event)"></app-page-tab>
       </div> <!-- end nav wrapper -->
 
       <div id='content-wrapper'> 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-page-tab',
@@ -8,13 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class PageTabComponent implements OnInit {
 
   tab_names = null;
+  router_names = null;
   selected_tab = null;
+  @Output() tabTrigger = new EventEmitter<string>();
 
-  constructor() { 
+  constructor(private router: Router) { 
 
     this.tab_names = ["Global System Parameters", "Job Parameters", "All Jobs"];
-    this.selected_tab = this.tab_names[0];
-    
+    this.router_names = ['/global-settings', '/job-settings', '/all-jobs'];
+    this.selected_tab = this.tab_names[0];    
+
   }
 
   switchTabs(event) {
@@ -34,11 +38,7 @@ export class PageTabComponent implements OnInit {
     this.selected_tab = this.tab_names[selectedIndex];
 
     //update page contents
-    this.updatePage();
-  }
-
-  updatePage() {
-
+    this.tabTrigger.emit(this.router_names[selectedIndex]);
   }
 
   ngOnInit(): void {}
