@@ -9,7 +9,7 @@ export class GlobalPageComponent implements OnInit {
 
   constructor() {
 
-   }
+  }
 
   ngOnInit(): void {
   }

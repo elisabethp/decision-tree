@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-parameter-selector',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParameterSelectorComponent implements OnInit {
 
+  //@Output() selectItemTrigger = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

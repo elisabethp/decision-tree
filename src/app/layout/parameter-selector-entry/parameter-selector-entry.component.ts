@@ -9,6 +9,10 @@ export class ParameterSelectorEntryComponent implements OnInit {
 
   constructor() { }
 
+  selectItem(event) {
+
+  }
+
   ngOnInit(): void {
   }
 
