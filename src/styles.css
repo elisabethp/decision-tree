@@ -9,3 +9,43 @@ body {
     background-color: #FAFAFA;
 }
 
+.table-header {
+    display: flex;
+    height: 45px;
+    width: calc(100%-2%);
+    border: 0 0 inherit 0;
+}
+
+.table-field {
+    padding: 13px 0 0 13px;
+}
+
+.table-separator {
+    height: 100%;
+    width: 1px;
+    background-color: #DCDCDC;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.bg-color-main {
+    background-color: #FAFAFA;
+}
+
+.bg-color-accent {
+    background-color: #E8E8E8;
+}
+
+.content-border {
+    border: 0.1px #DCDCDC solid;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.data-table-content {
+    overflow-y: scroll;
+}

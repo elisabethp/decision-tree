@@ -5,6 +5,7 @@
 :host { 
     display: flex;
     flex-direction: column;
+    height: 10%;
 }
 
 #tabset-wrapper {
@@ -21,7 +22,6 @@
     padding-bottom: 0.2%;
     margin-right: 4px;
     border-radius: 10px 10px 0 0;
-    background-color: #E8E8E8;
     text-transform: uppercase;
 }
 
@@ -37,7 +37,6 @@
 }
 
 .page-tab:not(.selected-page-tab) {
-    border: 0.1px #DCDCDC solid;
     border-bottom: none;
 }
 
@@ -51,8 +50,6 @@
     align-items: center;
     padding: 1% 1.5%;
     height: 50px;
-    background-color: #E8E8E8;
-    border: 0.1px #DCDCDC solid;
 }
 
 #tab-name {

@@ -1,0 +1,10 @@
+:host {
+    display: flex;
+    height: 45px;
+    border-bottom: 0.1px #DCDCDC solid;
+}
+
+:host:hover {
+    cursor: pointer;
+    background-color: #DCDCDC;
+}

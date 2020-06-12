@@ -1,6 +1,6 @@
 <div id="tabset-wrapper">
     <div *ngFor="let tab of tab_names; index as i; first as isFirst" 
-        class="page-tab"
+        class="page-tab content-border bg-color-accent"
         [class.selected-page-tab]= "isFirst"
         (click) = "switchTabs($event)"
         [attr.data-tab-index]="i">
@@ -8,7 +8,7 @@
     </div>    
 </div>
 
-<div id="tab-header">
+<div id="tab-header" class="bg-color-accent content-border">
    <span id="tab-name">{{ selected_tab }}</span>
 </div> <!-- end tab header -->
 
