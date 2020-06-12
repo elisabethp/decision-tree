@@ -12,8 +12,12 @@ body {
 .table-header {
     display: flex;
     height: 45px;
-    width: calc(100%-2%);
-    border: 0 0 inherit 0;
+    width: calc(100% - 7px);
+    border-bottom: 0.1px #DCDCDC solid;
+}
+
+.table-header div:not(.table-separator) {
+    height: calc(100% - 13px);
 }
 
 .table-field {
@@ -30,12 +34,20 @@ body {
     width: 50%;
 }
 
+.width-100 {
+    width: 100%;
+}
+
 .bg-color-main {
     background-color: #FAFAFA;
 }
 
 .bg-color-accent {
     background-color: #E8E8E8;
+}
+
+.bg-color-white {
+    background-color: #fff;
 }
 
 .content-border {

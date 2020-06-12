@@ -9,6 +9,7 @@ import { ParameterSelectorComponent } from './parameter-selector/parameter-selec
 import { FilterSelectorComponent } from './filter-selector/filter-selector.component';
 import { SearchIdComponent } from './search-id/search-id.component';
 import { DataTableEntryComponent } from './data-table-entry/data-table-entry.component';
+import { ParameterSelectorEntryComponent } from './parameter-selector-entry/parameter-selector-entry.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DataTableEntryComponent } from './data-table-entry/data-table-entry.com
     ParameterSelectorComponent,
     FilterSelectorComponent,
     SearchIdComponent,
-    DataTableEntryComponent
+    DataTableEntryComponent,
+    ParameterSelectorEntryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,12 @@
 :host {
     display: flex;
     flex-direction: column;
-    height: /*100%;*/ 800px;
+    height: /*100%;*/ 700px;
     width: 100%;
     border: 0.1px #DCDCDC solid;
+    background: #e8e8e8;
 }
 
-.table-separator {
-    color: #000;
-}
 
 
 ::-webkit-scrollbar {
