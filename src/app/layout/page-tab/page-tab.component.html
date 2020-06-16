@@ -10,6 +10,12 @@
 
 <div id="tab-header" class="bg-color-accent content-border">
    <span id="tab-name">{{ selected_tab }}</span>
+   <div id="search-wrapper">
+        <input id="search-input" name="" type="search"/>
+        <div id="search-button" (click)="performSearch()">
+            <i style='font-size:15px;' class='fa fa-search'></i>
+        </div>
+   </div>
 </div> <!-- end tab header -->
 
 

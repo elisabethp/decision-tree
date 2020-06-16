@@ -47,6 +47,7 @@
 
 #tab-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 1% 1.5%;
     height: 50px;
@@ -55,4 +56,13 @@
 #tab-name {
     font-size: 20px;
     font-weight: 700;
+}
+
+#search-wrapper {
+    display: flex;
+    cursor: pointer;
+}
+
+#search-button {
+    padding-left: 10px;
 }

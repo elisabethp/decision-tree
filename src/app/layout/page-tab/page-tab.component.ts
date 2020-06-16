@@ -11,6 +11,9 @@ export class PageTabComponent implements OnInit {
   router_names = null;
   selected_tab = null;
   selected_tab_index = null;
+  
+  search_bar = null;
+  search_input = null;
 
   @Output() tabTrigger = new EventEmitter<string>();
 
@@ -18,12 +21,10 @@ export class PageTabComponent implements OnInit {
     this.tab_names = ["Global System Parameters", "Job Parameters", "All Jobs"];
     this.router_names = ['/global-settings', '/job-settings', '/all-jobs'];
 
-    this.selected_tab_index = window.location.pathname == '/'
-      ? 0
-      : this.router_names.indexOf(window.location.pathname);
+    console.log(window.location.pathname.includes(this.router_names[1]));
+    this.selected_tab_index = this.matchRoute();
 
-    this.selected_tab = this.tab_names[this.selected_tab_index];    
-
+    this.selected_tab = this.tab_names[this.selected_tab_index];
   }
 
   switchTabs(event) {
@@ -41,11 +42,52 @@ export class PageTabComponent implements OnInit {
     //update tab header title
     var selectedIndex = target.getAttribute('data-tab-index');    
     this.selected_tab = this.tab_names[selectedIndex];
+    
+    //show search bar?
+    this.isSearchEnabled();
 
     //update page contents
     this.tabTrigger.emit(this.router_names[selectedIndex]);
   }
 
-  ngOnInit(): void {}
+  isSearchEnabled() {
+    var isJobParameters = this.selected_tab == "Job Parameters"; 
+    
+    if (isJobParameters) {
+      this.search_bar.style.visibility = "visible";
+    }
+    else {
+      this.search_bar.style.visibility = "hidden";
+    }
+  }
+
+  performSearch(event) {
+    var id = this.search_input.value;
+    // if id is empty return red box?
+    this.tabTrigger.emit(this.router_names[1] + '/' + id);
+  }
+
+  matchRoute(): number {
+    var path = window.location.pathname; 
+    var index = 0;
+
+    for (var route in this.router_names){
+      if (path.includes(this.router_names[route])) {
+        index = this.router_names.indexOf(this.router_names[route]);
+      }
+    }
+
+    return index;
+  }
+  
+  ngOnInit(): void {
+  }
+
+  ngAfterContentInit(): void {
+    this.search_bar = document.getElementById('search-wrapper');    
+    this.isSearchEnabled();
+
+    this.search_input = document.getElementById("search-input");
+  }
 
 }

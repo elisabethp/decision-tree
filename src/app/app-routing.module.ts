@@ -5,7 +5,7 @@ import { AppComponent } from './app.component'
 import { GlobalPageComponent } from './global-page/global-page.component';
 import { JobPageComponent } from './job-page/job-page.component';
 import { AllJobPageComponent } from './all-job-page/all-job-page.component';
-import { PageTabComponent } from './layout/page-tab/page-tab.component';
+import { JobDataPageComponent } from './job-data-page/job-data-page.component';
 
    
 const routes: Routes = [
@@ -17,13 +17,13 @@ const routes: Routes = [
   {
     path: 'global-settings',
     component: GlobalPageComponent,
-    children:[
-      { path: '', component: PageTabComponent},
-    ] 
   },
   {
     path: 'job-settings',
-    component: JobPageComponent,
+    children:[
+      { path: '', component: JobPageComponent},
+      { path: ':id', component: JobDataPageComponent},
+    ] 
   },
   {
     path: 'all-jobs',
