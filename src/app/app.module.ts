@@ -13,6 +13,7 @@ import { GlobalPageComponent } from './global-page/global-page.component';
 import { JobPageComponent } from './job-page/job-page.component';
 import { AllJobPageComponent } from './all-job-page/all-job-page.component';
 import { JobDataPageComponent } from './job-data-page/job-data-page.component';
+import { FilterSelectorEntryComponent } from './filter-selector-entry/filter-selector-entry.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { JobDataPageComponent } from './job-data-page/job-data-page.component';
     GlobalPageComponent,
     JobPageComponent,
     AllJobPageComponent,
-    JobDataPageComponent
+    JobDataPageComponent,
+    FilterSelectorEntryComponent
   ],
   imports: [
     BrowserModule,
