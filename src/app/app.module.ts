@@ -13,7 +13,9 @@ import { GlobalPageComponent } from './global-page/global-page.component';
 import { JobPageComponent } from './job-page/job-page.component';
 import { AllJobPageComponent } from './all-job-page/all-job-page.component';
 import { JobDataPageComponent } from './job-data-page/job-data-page.component';
-import { FilterSelectorEntryComponent } from './filter-selector-entry/filter-selector-entry.component';
+import { FilterSelectorEntryComponent } from './layout/filter-selector-entry/filter-selector-entry.component';
+import { JobDataTableComponent } from './layout/job-data-table/job-data-table.component';
+import { JobDataTableEntryComponent } from './job-data-table-entry/job-data-table-entry.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FilterSelectorEntryComponent } from './filter-selector-entry/filter-sel
     JobPageComponent,
     AllJobPageComponent,
     JobDataPageComponent,
-    FilterSelectorEntryComponent
+    FilterSelectorEntryComponent,
+    JobDataTableComponent,
+    JobDataTableEntryComponent
   ],
   imports: [
     BrowserModule,
