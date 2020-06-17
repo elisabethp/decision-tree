@@ -15,7 +15,10 @@ import { AllJobPageComponent } from './all-job-page/all-job-page.component';
 import { JobDataPageComponent } from './job-data-page/job-data-page.component';
 import { FilterSelectorEntryComponent } from './layout/filter-selector-entry/filter-selector-entry.component';
 import { JobDataTableComponent } from './layout/job-data-table/job-data-table.component';
-import { JobDataTableEntryComponent } from './job-data-table-entry/job-data-table-entry.component';
+import { JobDataTableEntryComponent } from './layout/job-data-table-entry/job-data-table-entry.component';
+import { ModifyPopupComponent } from './modify-popup/modify-popup.component';
+import { FilterPopupComponent } from './filter-popup/filter-popup.component';
+import { DecisionPopupComponent } from './decision-popup/decision-popup.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { JobDataTableEntryComponent } from './job-data-table-entry/job-data-tabl
     JobDataPageComponent,
     FilterSelectorEntryComponent,
     JobDataTableComponent,
-    JobDataTableEntryComponent
+    JobDataTableEntryComponent,
+    ModifyPopupComponent,
+    FilterPopupComponent,
+    DecisionPopupComponent
   ],
   imports: [
     BrowserModule,
