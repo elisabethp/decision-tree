@@ -16,9 +16,9 @@ import { JobDataPageComponent } from './job-data-page/job-data-page.component';
 import { FilterSelectorEntryComponent } from './layout/filter-selector-entry/filter-selector-entry.component';
 import { JobDataTableComponent } from './layout/job-data-table/job-data-table.component';
 import { JobDataTableEntryComponent } from './layout/job-data-table-entry/job-data-table-entry.component';
-import { ModifyPopupComponent } from './modify-popup/modify-popup.component';
-import { FilterPopupComponent } from './filter-popup/filter-popup.component';
-import { DecisionPopupComponent } from './decision-popup/decision-popup.component';
+import { ModifyPopupComponent } from './layout/modify-popup/modify-popup.component';
+import { FilterPopupComponent } from './layout/filter-popup/filter-popup.component';
+import { DecisionPopupComponent } from './layout/decision-popup/decision-popup.component';
 
 @NgModule({
   declarations: [

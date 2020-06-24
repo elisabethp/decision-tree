@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-global-page',
@@ -7,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GlobalPageComponent implements OnInit {
 
+  @Output() openModalTrigger = new EventEmitter<string>();
+
   constructor() {
 
+  }
+
+  edit() {
+    console.log('global page');
+    this.openModalTrigger.emit('modify');
   }
 
   ngOnInit(): void {

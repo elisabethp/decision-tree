@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-data-table',
@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataTableComponent implements OnInit {
 
+  @Output() openModalTrigger = new EventEmitter<string>();
+
   constructor() { }
+
+  edit() {
+    console.log('data-table');
+    this.openModalTrigger.emit('modify');
+  }
 
   ngOnInit(): void {
   }

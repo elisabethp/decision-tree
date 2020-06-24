@@ -1,0 +1,15 @@
+.show-value-transition {
+    flex-direction: row;
+}
+
+.transition-wrapper {
+    margin: 0px 15px;
+}
+
+.transition-wrapper:first-child {
+    margin-left: 0;
+}
+
+#modify-content-validate {
+    display: none;
+}

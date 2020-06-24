@@ -1,0 +1,52 @@
+<div id="modify-modal" class="modal">
+    <div class="modal-wrapper">
+        <div class="modal-header">
+            <span class="modal-title">Modify Job Parameter</span>
+            <span class="close">&times;</span>
+        </div>
+
+        <div class="modal-content">
+            <div id="modify-content">
+                <div class="modal-section">
+                    <div class="modal-field-title">Parameter</div>
+                    <div>Parameter Name</div>
+                </div>
+                <div class="modal-section">
+                    <div class="modal-field-title">Parameter Value</div>
+                    <input value="Parameter Value" type="text">
+                </div>
+        
+                <div class="modal-footer modal-section">
+                    <button (click)="validate()" id="confirm-modal">Modify</button>
+                </div>
+            </div>
+
+            <div id="modify-content-validate">
+                <span> Are you sure you would like to make this change?</span>
+                <div class="modal-section">
+                    <div class="modal-field-title">Parameter</div>
+                    <div>Parameter Name</div>
+                </div>
+                <div class="modal-section show-value-transition">
+                    <div class='transition-wrapper'>
+                        <div class="modal-field-title">Old Value</div>
+                        <div>1234</div>
+                    </div>
+                    <div class='transition-wrapper'>
+                        <i style='font-size:20px;' class="fa fa-arrow-right"></i>
+                    </div>
+                    <div class='transition-wrapper'>
+                        <div class="modal-field-title">New Value</div>
+                        <div>1234</div>
+                    </div>
+                </div>
+        
+                <div class="modal-footer modal-section">
+                    <button id="confirm-modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+  
+</div>

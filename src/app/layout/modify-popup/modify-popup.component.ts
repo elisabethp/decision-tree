@@ -9,6 +9,14 @@ export class ModifyPopupComponent implements OnInit {
 
   constructor() { }
 
+  validate() {
+    var visibleContent = document.getElementById('modify-content');
+    var invisibleContent = document.getElementById('modify-content-validate');
+
+    visibleContent.style.display = 'none';
+    invisibleContent.style.display = 'block'
+  }
+
   ngOnInit(): void {
   }
 
