@@ -23,6 +23,8 @@ import { SelectTableComponent } from './layout/select-table/select-table.compone
 import { SelectTableEntryComponent } from './layout/select-table-entry/select-table-entry.component';
 import { GlobalDataPageComponent } from './global-data-page/global-data-page.component';
 import { TableComponent } from './layout/table/table.component';
+import { ChannelDataComponent } from './layout/channel-data/channel-data.component';
+import { ItemRowComponent } from './layout/item-row/item-row.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { TableComponent } from './layout/table/table.component';
     SelectTableComponent,
     SelectTableEntryComponent,
     GlobalDataPageComponent,
-    TableComponent
+    TableComponent,
+    ChannelDataComponent,
+    ItemRowComponent
   ],
   imports: [
     BrowserModule,

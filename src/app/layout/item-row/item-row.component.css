@@ -1,0 +1,12 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    border: 0.1px #DCDCDC solid;
+    border-bottom: none;
+    padding: 10px 10px;
+}
+
+:host:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+}

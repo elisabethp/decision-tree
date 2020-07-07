@@ -1,27 +1,34 @@
 <div class='table'>
     <div class="table-header bg-color-accent">
-        {{ list.display_name }}
+        <span>{{ list.display_name }}</span>
+        <i 
+            [attr.data-table]='list.name'
+            (click)='toggleShow($event)'
+            class="fa fa-plus" 
+            aria-hidden="true"></i>
     </div>
 
-    <div class="table-column-header bg-color-white">
-        <div class='table-column' *ngFor="let column of list.column_names">
-            {{ column }}
+    <div [attr.id]='list.name' class='collapsible'>
+        <div class="table-column-header bg-color-white">
+            <div class='table-column' *ngFor="let column of list.column_names">
+                {{ column }}
+            </div>
         </div>
+    
+        <div class="table-content">
+            <div class='table-row bg-color-white' *ngFor="let row_item of list.row_data">
+                <div class='row-data'>
+                    <div class='row-field' *ngFor="let column of list.column_names; index as i; last as isLast">
+                        
+                        {{ getValues(row_item)[i] }}
+    
+                        <div *ngIf="isLast" class="table-row-decoration">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </div>
+    
+                    </div> <!-- end row-field -->
+                </div> <!-- end row-data -->
+            </div> <!-- end table-row -->
+        </div> <!-- end table-content -->
     </div>
-
-    <div class="table-content">
-        <div class='table-row bg-color-white' *ngFor="let row_item of list.row_data">
-            <div class='row-data'>
-                <div class='row-field' *ngFor="let column of list.column_names; index as i; last as isLast">
-                    
-                    {{ getValues(row_item)[i] }}
-
-                    <div *ngIf="isLast" class="table-row-decoration">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </div>
-
-                </div> <!-- end row-field -->
-            </div> <!-- end row-data -->
-        </div> <!-- end table-row -->
-    </div> <!-- end table-content -->
 </div> <!-- end table -->

@@ -193,3 +193,19 @@ button:hover {
     cursor: pointer;
 }
 
+app-item-row {
+    background-color: #fff;
+}
+
+app-item-row:first-child {
+    margin-top: 20px;
+}
+
+app-item-row:last-child {
+    border-bottom: 0.1px #DCDCDC solid;
+}
+
+.section-header {
+    padding-left: 10px;
+    font-weight: bold;
+}

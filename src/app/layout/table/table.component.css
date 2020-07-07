@@ -11,8 +11,14 @@
 }
 
 .table-header {
+    display: flex;
+    justify-content: space-between;
     width: calc(100% - 20px);
     padding: 0px 10px;
+}
+
+.table-header i:hover {
+    cursor: pointer;
 }
 
 .table-content {
@@ -59,3 +65,6 @@
     border-right: 0;
 }
 
+.collapsible {
+    display: none;
+}
