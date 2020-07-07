@@ -44,6 +44,10 @@ body {
     padding: 15px 15px 0 15px;
 }
 
+.table-field:hover {
+    background-color: aliceblue;
+}
+
 .table-separator {
     height: 100%;
     width: 1px;
@@ -188,3 +192,4 @@ body {
 button:hover {
     cursor: pointer;
 }
+

@@ -1,0 +1,29 @@
+{
+    "count": 5,
+    "data": [
+        {
+            "name": "Gce",
+            "display_name": "Google Cloud Engine"
+        },
+        {
+            "name": "Nersc",
+            "display_name": "NERSC"
+        },
+        {
+            "name": "AWS_Calculations_with_source_proxy",
+            "display_name": "AWS Calculations"
+        },
+        {
+            "name": "channel_aws_config_data",
+            "display_name": "AWS Configuration"
+        },
+        {
+            "name": "job_classification",
+            "display_name": "Job Classification"
+        },
+        {
+            "name": "resource_request",
+            "display_name": "Resource Request"
+        }
+    ]
+}

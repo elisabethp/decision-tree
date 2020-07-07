@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    height: 50px;
+    border-bottom: 0.1px ##DCDCDC solid;
+    background-color: #E8E8E8;
+}
+
+:host:hover {
+    cursor: pointer;
+    background-color: #DCDCDC;
+}
+
+.job-details-title {
+    flex-grow: .3 !important;
+}

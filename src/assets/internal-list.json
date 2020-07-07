@@ -1,0 +1,25 @@
+{
+    "count": 20,
+    "data": [
+        "job_clusters", 
+        "startd_manifests", 
+        "Nersc_Allocation_Info", 
+        "GCE_Figure_Of_Merit", 
+        "GCE_Billing_Info", 
+        "Nersc_Figure_Of_Merit",
+        "AWS_Figure_Of_Merit", 
+        "job_manifests", 
+        "GCE_Burn_Rate", 
+        "Factory_Entries_Grid", 
+        "Factory_Entries_AWS", 
+        "Factory_Entries_GCE", 
+        "Factory_Entries_LCF",
+        "AWS_Burn_Rate", 
+        "financial_params", 
+        "AWS_Billing_Info", 
+        "AWS_Billing_Rate", 
+        "factoryglobal_manifests", 
+        "glideclientglobal_manifests", 
+        "glideclient_manifests"
+    ]
+}

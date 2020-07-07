@@ -1,7 +1,13 @@
-<div id='left-content'>
-    <app-data-table (openModalTrigger)="edit()"></app-data-table>
-</div> <!-- end left wrapper -->
-
-<div id='right-content'>
-    <app-parameter-selector></app-parameter-selector>
-</div> <!-- end right wrapper -->
+<div *ngFor="let channel of channelNames.data; index as i" class="collapsible">
+    <div class="collapsible-header">
+        <span class="collapsible-title">{{channel.display_name}}</span>
+        <i 
+            [attr.data-tab-index]="channel.name"
+            (click)='toggleCollapse($event)' 
+            class="fa fa-minus" aria-hidden="true"></i>
+    </div>
+    <hr>
+    <div #section *ngIf="selected_section == i" class="collapsible-content display-section">
+        <ng-template #container></ng-template>
+    </div>
+</div>

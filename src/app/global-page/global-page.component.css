@@ -1,4 +1,60 @@
 :host {
     display: flex;
+    flex-direction: column;
     width: 100%;
+}
+
+.collapsible {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.collapsible:last-child {
+    margin-bottom: 0;
+}
+
+.collapsible:first-child {
+    margin-top: 0;
+}
+
+.collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 20px);
+    padding: 10px 10px;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.collapsible-header {
+    cursor: pointer;
+}
+
+.collapsible-title {
+    font-size: 18px;
+}
+
+.collapsible-content {
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 700px;
+}
+
+.collapsible-title {
+    font-weight: bold;
+}
+
+#right-content, #left-content {
+    width: 50%;
+}
+
+.display-section {
+    display: flex !important;
+}
+
+.display-50 {
+    width: 30%;
 }

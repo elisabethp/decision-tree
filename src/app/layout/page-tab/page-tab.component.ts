@@ -18,7 +18,7 @@ export class PageTabComponent implements OnInit {
   @Output() tabTrigger = new EventEmitter<string>();
 
   constructor() { 
-    this.tab_names = ["Global System Parameters", "Job Parameters", "All Jobs"];
+    this.tab_names = ["Global System Status", "Job Parameters", "All Jobs"];
     this.router_names = ['/global-settings', '/job-settings', '/all-jobs'];
 
     console.log(window.location.pathname.includes(this.router_names[1]));

@@ -19,6 +19,10 @@ import { JobDataTableEntryComponent } from './layout/job-data-table-entry/job-da
 import { ModifyPopupComponent } from './layout/modify-popup/modify-popup.component';
 import { FilterPopupComponent } from './layout/filter-popup/filter-popup.component';
 import { DecisionPopupComponent } from './layout/decision-popup/decision-popup.component';
+import { SelectTableComponent } from './layout/select-table/select-table.component';
+import { SelectTableEntryComponent } from './layout/select-table-entry/select-table-entry.component';
+import { GlobalDataPageComponent } from './global-data-page/global-data-page.component';
+import { TableComponent } from './layout/table/table.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,11 @@ import { DecisionPopupComponent } from './layout/decision-popup/decision-popup.c
     JobDataTableEntryComponent,
     ModifyPopupComponent,
     FilterPopupComponent,
-    DecisionPopupComponent
+    DecisionPopupComponent,
+    SelectTableComponent,
+    SelectTableEntryComponent,
+    GlobalDataPageComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
