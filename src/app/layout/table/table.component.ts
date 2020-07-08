@@ -10,7 +10,6 @@ import { APIService } from '../../api.service';
 export class TableComponent implements OnInit {
 
   @Input() table_data: string = 'default';
-  @HostBinding('class.display-50') display50: boolean = false;
 
   list = null
   column_names = null;
@@ -29,24 +28,36 @@ export class TableComponent implements OnInit {
     var target = event.target;
     var data_table = target.getAttribute('data-table');
 
-    console.log(target);
-    console.log(data_table);
-
-    if (target.classList.contains('fa-minus')) { //it is expanded
+    if (target.classList.contains('fa-minus')) { //table is expanded
       console.log('ok')
       document.getElementById(data_table).style.display = 'none';
       target.classList.remove('fa-minus');
       target.classList.add('fa-plus');
     } 
-    else if (target.classList.contains('fa-plus')) { //it is collapsed
+    else if (target.classList.contains('fa-plus')) { //table is collapsed
       console.log("no")
-      document.getElementById(data_table).style.display = 'block';
+      document.getElementById(data_table).style.display = 'table';
       target.classList.add('fa-minus');
       target.classList.remove('fa-plus');
     }
     else {
       return;
     }
+  }
 
+  positionTooltip(e) {
+    var tooltipSpan = document.getElementsByClassName('tr-tooltip')[0];
+    var x = e.clientX,
+        y = e.clientY;
+        
+    tooltipSpan.style.position = 'fixed';
+    tooltipSpan.style.display = 'inline-block';
+    tooltipSpan.style.top = (y + 10) + "px";
+    tooltipSpan.style.left = (x + 10) + "px";
+  }
+
+  removeTooltip() {
+    var tooltipSpan = document.getElementsByClassName('tr-tooltip')[0];
+    tooltipSpan.style.display = 'none';
   }
 }

@@ -1,0 +1,117 @@
+{
+    "count": 2,
+    "data": [
+        {
+            "name": "Nersc_Figure_Of_Merit",
+            "display_name": "NERSC Figure Of Merit",
+            "no_col": 2,
+            "column_names": ["EntryName", "FigureOfMerit"],
+            "row_data": [
+                { 
+                    "EntryName": "FIFE_T3_US_NERSC_Cori_KNL", 
+                    "FigureOfMerit": "0.0317647"
+                },
+                { 
+                    "EntryName": "CMSHTPC_T3_US_NERSC_Cori_shared", 
+                    "FigureOfMerit": "0.00118248"
+                },
+                { 
+                    "EntryName": "CMSHTPC_T3_US_NERSC_Cori_SL7_PREM", 
+                    "FigureOfMerit": "0.525"
+                },
+                { 
+                    "EntryName": "CMSHTPC_T3_US_NERSC_Cori", 
+                    "FigureOfMerit": "0.013125"
+                },
+                { 
+                    "EntryName": "FIFE_T3_US_NERSC_Cori", 
+                    "FigureOfMerit": "0.013125"
+                },
+                { 
+                    "EntryName": "CMSHTPC_T3_US_NERSC_Cori_KNL", 
+                    "FigureOfMerit": "0.00635294"
+                },
+                { 
+                    "EntryName": "CMSHTPC_T3_US_NERSC_Cori_KNL_SL7", 
+                    "FigureOfMerit": "0.00635294"
+                },
+                { 
+                    "EntryName": "DUNE_T3_US_NERSC_Cori_KNL_SL7", 
+                    "FigureOfMerit": "0.00494118"
+                },
+                { 
+                    "EntryName": "FIFE_T3_US_NERSC_Cori_shared", 
+                    "FigureOfMerit": "0.00591241"
+                },
+                { 
+                    "EntryName": "DUNE_T3_US_NERSC_Cori_shared", 
+                    "FigureOfMerit": "0.00591241"
+                }
+            ]
+        },
+        {
+            "name": "Nersc_Price_Performance",
+            "display_name": "NERSC Price Performance",
+            "no_col": 2,
+            "column_names": ["EntryName", "PricePerformance"],
+            "row_data": [
+                { 
+                    "EntryName": "CMSHTPC_T3_US_NERSC_Cori", 
+                    "FigureOfMerit": "1.3125"
+                },
+                { 
+                    "EntryName": "CMSHTPC_T3_US_NERSC_Cori_SL6_PREM", 
+                    "FigureOfMerit": "2.625"
+                },
+                { 
+                    "EntryName": "FIFE_T3_US_NERSC_Cori", 
+                    "FigureOfMerit": "1.3125"
+                },
+                { 
+                    "EntryName": "FIFE_T3_US_NERSC_Cori_shared", 
+                    "FigureOfMerit": "0.591241"
+                },
+                { 
+                    "EntryName": "FIFE_T3_US_NERSC_Cori_KNL", 
+                    "FigureOfMerit": "3.17647"
+                },
+                { 
+                    "EntryName": "FIFE_T3_US_NERSC_Edison", 
+                    "FigureOfMerit": "0.656535"
+                },
+                { 
+                    "EntryName": "FIFE_T3_US_NERSC_Edison_shared", 
+                    "FigureOfMerit": "0.658537"
+                },
+                { 
+                    "EntryName": "DUNE_T3_US_NERSC_Cori", 
+                    "FigureOfMerit": "1.3125"
+                },
+                { 
+                    "EntryName": "DUNE_T3_US_NERSC_Cori_shared", 
+                    "FigureOfMerit": "0.591241"
+                },
+                { 
+                    "EntryName": "DUNE_T3_US_NERSC_Cori_KNL", 
+                    "FigureOfMerit": "4.94118"
+                },
+                { 
+                    "EntryName": "DUNE_T3_US_NERSC_Cori_KNL_SL7", 
+                    "FigureOfMerit": "4.94118"
+                },
+                { 
+                    "EntryName": "CMSHTPC_T3_US_NERSC_Cori_SL7_PREM", 
+                    "FigureOfMerit": "2.625"
+                },
+                { 
+                    "EntryName": "CMSHTPC_T3_US_NERSC_Cori_shared", 
+                    "FigureOfMerit": "0.591241"
+                },
+                { 
+                    "EntryName": "CMSHTPC_T3_US_NERSC_Cori_KNL", 
+                    "FigureOfMerit": "3.17647"
+                }
+            ]
+        }
+    ]
+}

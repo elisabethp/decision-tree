@@ -9,14 +9,21 @@ import { APIService } from '../api.service';
 export class GlobalPageComponent implements OnInit {
 
   @Output() openModalTrigger = new EventEmitter<string>();
+  
   channelNames = null;
+  selectedChannel = null;
 
   constructor(private api : APIService) {
     this.channelNames = api.getChannelNames();
+    this.selectedChannel = this.channelNames.data[0];
   }
 
   ngOnInit(): void {}
 
-  ngAfterViewInit()	{}
+  goToChannel(event) {
+    var target = event.target;
+    var channel_index = target.getAttribute("channel");
+    this.selectedChannel = this.channelNames.data[channel_index];
+  }
 
 }

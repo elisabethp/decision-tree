@@ -3,9 +3,11 @@
     <hr>  
         <app-item-row 
             *ngFor="let channel of channelNames.data; index as i"
-            [name]='channel.display_name'>
+            [name]='channel.display_name'
+            [attr.channel]='i'
+            (click)='goToChannel($event)'>
         </app-item-row>
 </div>
 <div id='right-content'>
-    <app-channel-data [channel]="channelNames.data[0]" ></app-channel-data>
+    <app-channel-data [channel]="selectedChannel" ></app-channel-data>
 </div>

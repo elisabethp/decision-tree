@@ -8,27 +8,26 @@
             aria-hidden="true"></i>
     </div>
 
-    <div [attr.id]='list.name' class='collapsible'>
-        <div class="table-column-header bg-color-white">
-            <div class='table-column' *ngFor="let column of list.column_names">
-                {{ column }}
-            </div>
-        </div>
-    
-        <div class="table-content">
-            <div class='table-row bg-color-white' *ngFor="let row_item of list.row_data">
-                <div class='row-data'>
-                    <div class='row-field' *ngFor="let column of list.column_names; index as i; last as isLast">
-                        
-                        {{ getValues(row_item)[i] }}
-    
-                        <div *ngIf="isLast" class="table-row-decoration">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </div>
-    
-                    </div> <!-- end row-field -->
-                </div> <!-- end row-data -->
-            </div> <!-- end table-row -->
-        </div> <!-- end table-content -->
-    </div>
+    <table [attr.id]='list.name' class='collapsible'>
+        <thead>
+            <tr>
+                <th *ngFor="let column of list.column_names"> {{ column }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tooltip" 
+                *ngFor="let row_item of list.row_data"
+                (mousemove)="positionTooltip($event)"
+                (mouseleave)="removeTooltip()">
+                <td *ngFor="let column of list.column_names; index as i; last as isLast">
+                    {{ getValues(row_item)[i] }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div> <!-- end table -->
+
+<span class="tr-tooltip">
+    Edit
+    <i class="fa fa-edit" aria-hidden="true"></i>
+</span>
