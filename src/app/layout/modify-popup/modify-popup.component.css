@@ -13,3 +13,42 @@
 #modify-content-validate {
     display: none;
 }
+
+table {
+    width: 100%;
+}
+
+tbody, table {
+    background-color: none !important;
+
+}
+
+thead, tbody tr {
+    display: table;
+    table-layout: fixed; /* even columns width , fix width of table too*/
+}
+
+th {
+    text-align: left;
+}
+
+td, th {
+    word-wrap: break-word;
+    padding: 10px 0;
+}
+
+input {
+    width: calc(100% - 8px);
+    padding: 2px
+}
+
+tbody {
+    display: block;
+    overflow-y: scroll;
+    max-height: 350px;
+}
+
+
+table, thead, tbody, .table, tbody tr {
+    width: 100%;
+}

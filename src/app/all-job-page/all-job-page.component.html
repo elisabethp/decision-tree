@@ -1,7 +1,25 @@
 <div id='left-content'>
-    <app-job-data-table></app-job-data-table>
-</div> <!-- end left wrapper -->
+    <div class="content-header">
+        <span class="section-header">Filter by Class-Add(s)</span>
+        <i (click)="addFilter()" class="fa fa-plus-circle"></i>
+    </div>
+    <hr>  
+    
+    <p *ngIf="filters.length == 0">
+        <br>
+        No filters added. 
+        <br><br> 
+    </p>
 
+    <app-item-row 
+        *ngFor="let filter of filters; index as i"
+        [name]='filter'
+        [attr.filter-index]='i'
+        (click)='removeFilter($event)'>
+    </app-item-row>
+</div>
 <div id='right-content'>
-    <app-filter-selector></app-filter-selector>
-</div> <!-- end right wrapper -->
+    <span class="section-header">All Jobs</span>
+    <hr> 
+    <app-job-data-table [jobs]="filtered_jobs" ></app-job-data-table>
+</div>

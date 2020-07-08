@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { APIService } from '../../api.service';
 
 @Component({
@@ -8,10 +8,10 @@ import { APIService } from '../../api.service';
 })
 
 export class TableComponent implements OnInit {
-
   @Input() table_data: string = 'default';
 
-  list = null
+  channel = null;
+  list = null;
   column_names = null;
 
   constructor(private api : APIService) {}
@@ -29,13 +29,11 @@ export class TableComponent implements OnInit {
     var data_table = target.getAttribute('data-table');
 
     if (target.classList.contains('fa-minus')) { //table is expanded
-      console.log('ok')
       document.getElementById(data_table).style.display = 'none';
       target.classList.remove('fa-minus');
       target.classList.add('fa-plus');
     } 
     else if (target.classList.contains('fa-plus')) { //table is collapsed
-      console.log("no")
       document.getElementById(data_table).style.display = 'table';
       target.classList.add('fa-minus');
       target.classList.remove('fa-plus');
@@ -46,7 +44,8 @@ export class TableComponent implements OnInit {
   }
 
   positionTooltip(e) {
-    var tooltipSpan = document.getElementsByClassName('tr-tooltip')[0];
+    var tooltipSpan: any;
+    tooltipSpan = document.getElementsByClassName('tr-tooltip')[0];
     var x = e.clientX,
         y = e.clientY;
         
@@ -57,7 +56,25 @@ export class TableComponent implements OnInit {
   }
 
   removeTooltip() {
-    var tooltipSpan = document.getElementsByClassName('tr-tooltip')[0];
+    var tooltipSpan: any;
+    tooltipSpan = document.getElementsByClassName('tr-tooltip')[0];
     tooltipSpan.style.display = 'none';
+  }
+
+  editRow(row, index) {
+    var event = new CustomEvent(
+      'global-click',
+      { detail: {
+          'switch-key': 'channel-edit-row',
+          'channel': this.channel, 
+          'table_name': this.list.name,
+          'column_names': this.column_names, 
+          'row': row,
+          'index': index
+        } 
+      }
+    );
+  
+    document.dispatchEvent(event);
   }
 }

@@ -3,7 +3,7 @@ import ChannelNames from '../assets/channel-list.json';
 import GceTransforms from '../assets/gce-transforms.json';
 import NerscTransforms from '../assets/nersc-transforms.json';
 import AwsTransforms from '../assets/aws-calc-transforms.json';
-
+import AllJobs from '../assets/all-jobs.json';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ export class APIService {
 
   constructor() { 
 
+  }
+
+  public getAllJobs() {
+    return AllJobs;
   }
 
   public getChannelNames() {

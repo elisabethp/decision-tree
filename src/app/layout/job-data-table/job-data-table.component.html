@@ -1,15 +1,22 @@
-<div id="data-table-header" class="table-header bg-color-accent">
-    <div class='table-field bold job-details-title-header'>
-        Foo
-    </div>
-    <div class='table-separator'></div>
-    <div class='table-field bold'>
-        Foo
-    </div>
-</div>
+<table>
+    <thead>
+        <tr>
+            <!--<th *ngFor="let column of column_names"> {{ column }}</th>-->
+            <th>ID</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr
+            *ngFor="let job of jobs.data"
+            (click)="goToJob(job)">
+            <td *ngFor="let column of column_names; index as i; last as isLast">
+                
+                {{ job[column] }}
 
-<div class="data-table-content">
-    <div *ngFor="let num of [0,1,2,3,4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]">
-        <app-job-data-table-entry></app-job-data-table-entry>
-    </div>
-</div>
+                <i *ngIf="isLast" class="fa fa-angle-right"></i>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -6,7 +6,6 @@ import { GlobalPageComponent } from './global-page/global-page.component';
 import { JobPageComponent } from './job-page/job-page.component';
 import { AllJobPageComponent } from './all-job-page/all-job-page.component';
 import { JobDataPageComponent } from './job-data-page/job-data-page.component';
-import { GlobalDataPageComponent } from './global-data-page/global-data-page.component';
 
    
 const routes: Routes = [
@@ -17,10 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'global-settings',
-    children:[
-      { path: '', component: GlobalPageComponent},
-      { path: ':product-name', component: GlobalDataPageComponent},
-    ] 
+    component: GlobalPageComponent,
   },
   {
     path: 'job-settings',

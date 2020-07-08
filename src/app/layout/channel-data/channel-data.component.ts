@@ -10,7 +10,7 @@ import { APIService } from '../../api.service';
 
 export class ChannelDataComponent implements OnInit, OnChanges {
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
-  @Input() channel: string = 'default';
+  @Input() channel: any = 'default';
 
   channel_data = null;
 
@@ -41,7 +41,9 @@ export class ChannelDataComponent implements OnInit, OnChanges {
     // Create component dynamically inside the ng-template
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
     const component = this.container.createComponent(componentFactory);
+    
     component.instance.list = this.channel_data["data"][index];
+    component.instance.channel = this.channel;
 
     this.changeDetector.detectChanges();
   }

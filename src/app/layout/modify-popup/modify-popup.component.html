@@ -1,48 +1,56 @@
 <div id="modify-modal" class="modal">
     <div class="modal-wrapper">
         <div class="modal-header">
-            <span class="modal-title">Modify Job Parameter</span>
-            <span class="close">&times;</span>
+            <span class="modal-title"> {{ title }} </span>
+            <span (click)="close()" class="close">&times;</span>
         </div>
 
         <div class="modal-content">
             <div id="modify-content">
-                <div class="modal-section">
-                    <div class="modal-field-title">Parameter</div>
-                    <div>Parameter Name</div>
-                </div>
-                <div class="modal-section">
-                    <div class="modal-field-title">Parameter Value</div>
-                    <input value="Parameter Value" type="text">
-                </div>
-        
+                <form>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter Name</th>
+                                <th>Parameter Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let column of data.column_names; index as i">
+                                <td>{{ column }}</td>
+                                <td>
+                                    <input data-edit-row="true" [value]="data.row[column]" type="text">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form> 
+
                 <div class="modal-footer modal-section">
-                    <button (click)="validate()" id="confirm-modal">Modify</button>
+                    <button (click)="validate()" id="confirm-modal">Submit</button>
                 </div>
             </div>
 
             <div id="modify-content-validate">
-                <span> Are you sure you would like to make this change?</span>
-                <div class="modal-section">
-                    <div class="modal-field-title">Parameter</div>
-                    <div>Parameter Name</div>
-                </div>
-                <div class="modal-section show-value-transition">
-                    <div class='transition-wrapper'>
-                        <div class="modal-field-title">Old Value</div>
-                        <div>1234</div>
-                    </div>
-                    <div class='transition-wrapper'>
-                        <i style='font-size:20px;' class="fa fa-arrow-right"></i>
-                    </div>
-                    <div class='transition-wrapper'>
-                        <div class="modal-field-title">New Value</div>
-                        <div>1234</div>
-                    </div>
-                </div>
-        
+                <p> Are you sure you would like to make these changes?</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter Name</th>
+                            <th>Parameter Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let column of data.column_names; index as i">
+                            <td>{{ column }}</td>
+                            <td>
+                                {{ values[i] }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="modal-footer modal-section">
-                    <button id="confirm-modal">Confirm</button>
+                    <button (click)="sendNewRows()" id="confirm-modal">Confirm</button>
                 </div>
             </div>
         </div>

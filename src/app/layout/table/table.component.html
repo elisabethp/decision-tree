@@ -16,12 +16,15 @@
         </thead>
         <tbody>
             <tr class="tooltip" 
-                *ngFor="let row_item of list.row_data"
+                *ngFor="let row_item of list.row_data; index as i"
+                (click)="editRow(row_item, i)"
                 (mousemove)="positionTooltip($event)"
                 (mouseleave)="removeTooltip()">
-                <td *ngFor="let column of list.column_names; index as i; last as isLast">
-                    {{ getValues(row_item)[i] }}
+
+                <td *ngFor="let column of list.column_names; index as j; last as isLast">
+                    {{ getValues(row_item)[j] }}
                 </td>
+
             </tr>
         </tbody>
     </table>
