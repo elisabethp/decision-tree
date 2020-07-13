@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, OnChanges, SimpleChanges } from '@angular/core';
 import { APIService } from '../api.service';
 
 @Component({
@@ -7,14 +7,27 @@ import { APIService } from '../api.service';
   styleUrls: ['./all-job-page.component.css']
 })
 
-export class AllJobPageComponent implements OnInit {
+export class AllJobPageComponent implements OnInit, OnChanges {
+  
+  @HostListener('document:all-job-page-click', ['$event'])
+  onClick(ev: any) {
+    console.log(ev);
+    switch(ev.detail['switch-key']) {
+      case 'update-filters': {
+        console.log(ev.detail)
+        this.filters = ev.detail['filters']
+        this.filtered_jobs = this.api.getAllJobs(null, this.filters);
+        break;
+      }
+    }
+  }
 
   all_jobs = null;
   filtered_jobs = null;
   filters = []
 
   constructor(private api : APIService) { 
-    this.all_jobs = this.api.getAllJobs();
+    this.all_jobs = this.api.getAllJobs(null, []);
     this.filtered_jobs = this.all_jobs;
   }
 
@@ -22,11 +35,28 @@ export class AllJobPageComponent implements OnInit {
   }
 
   addFilter() {
-
-  }
+    var event = new CustomEvent(
+      'global-click',
+      { detail: {
+          'switch-key': 'add-job-filter',
+          'filters': this.filters
+        } 
+      }
+    );
   
-  removeFilter(event) {
+    document.dispatchEvent(event);
+  }
+
+  removeFilter(event, index) {
+    this.filters.splice(index, 1);
+    this.filtered_jobs = this.api.getAllJobs(null, this.filters);
+    console.log(this.filters)
+    console.log(this.filtered_jobs)
 
   }
 
+  getFilterName(filter) {
+    //console.log(filter)
+    return filter.key + " = " + filter.value;
+  }
 }

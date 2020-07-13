@@ -1,6 +1,7 @@
 import { Component, ComponentFactoryResolver, Type, ViewChild, ViewContainerRef, HostListener } from '@angular/core';
 import { Router } from "@angular/router";
 import { ModifyPopupComponent } from './layout/modify-popup/modify-popup.component';
+import { FilterPopupComponent } from './layout/filter-popup/filter-popup.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   @ViewChild('modal', {read: ViewContainerRef}) container: ViewContainerRef;
   
   @HostListener('document:global-click', ['$event'])
-  onOpenModal(ev: any) {
+  onGlobalClick(ev: any) {
     console.log(ev);
 
     switch(ev.detail['switch-key']) {
@@ -24,6 +25,10 @@ export class AppComponent {
       }
       case 'job-edit-row': {
         console.log("job-edit-row");
+        break;
+      }
+      case 'add-job-filter': {
+        this.addComponent(this.filterModalClass, ev.detail);
         break;
       }
       case 'go-to-job': {
@@ -40,6 +45,7 @@ export class AppComponent {
 
   //components = [];
   modifyModalClass = ModifyPopupComponent;
+  filterModalClass = FilterPopupComponent;
 
   constructor(private router: Router, private componentFactoryResolver: ComponentFactoryResolver) {}
 

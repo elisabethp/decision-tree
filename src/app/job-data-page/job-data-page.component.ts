@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+import { APIService } from '../api.service';
 
 @Component({
   selector: 'app-job-data-page',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobDataPageComponent implements OnInit {
 
-  constructor() { }
+  routeSub = null;
+  id = null;
 
-  ngOnInit(): void {
+  job_data = null;
+
+  constructor(private route: ActivatedRoute, private api: APIService) { 
+  
+  }
+
+  ngOnInit() {
+    this.routeSub = this.route.params.subscribe(params => {
+      this.id = params['id'] //log the value of id
+      this.job_data = this.api.getJobDetails(this.id)
+    });
   }
 
 }

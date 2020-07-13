@@ -13,7 +13,7 @@
 
     <app-item-row 
         *ngFor="let filter of filters; index as i"
-        [name]='filter'
+        [name]='getFilterName(filter)'
         [attr.filter-index]='i'
         (click)='removeFilter($event)'>
     </app-item-row>

@@ -1,25 +1,22 @@
 <div id="filter-modal" class="modal">
     <div class="modal-wrapper">
         <div class="modal-header">
-            <span class="modal-title">Add Job Filter</span>
-            <span class="close">&times;</span>
+            <span class="modal-title">Add ClassAd Filter</span>
+            <span (click)="onClose()" class="close">&times;</span>
         </div>
 
         <div class="modal-content">
             <div class="modal-section">
-                <div class="modal-field-title">Select Filter</div>
-                <select name="filter-dropdown">
-                    <option value="Data Structures" selected>Data Structures</option>
-                    <option value="Data Mining">Data Mining</option>
-                 </select>
+                <div class="modal-field-title">Key</div>
+                <input id="key-input" placeholder="Key" type="text">
             </div>
             <div class="modal-section">
-                <div class="modal-field-title">Filter Value</div>
-                <input value="Parameter Value" type="text">
+                <div class="modal-field-title">Value</div>
+                <input id="value-input" placeholder="Value" type="text">
             </div>
     
             <div class="modal-footer modal-section">
-                <button id="confirm-modal">Add Filter</button>
+                <button (click)='onConfirm()' id="confirm-modal">Add Filter</button>
             </div>
 
         </div>

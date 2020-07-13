@@ -1,22 +1,27 @@
 <table>
     <thead>
         <tr>
-            <!--<th *ngFor="let column of column_names"> {{ column }}</th>-->
-            <th>ID</th>
-            <th>Description</th>
+            <th *ngFor="let column of column_names">{{ column }}</th>
         </tr>
     </thead>
     <tbody>
         <tr
             *ngFor="let job of jobs.data"
-            (click)="goToJob(job)">
+            (click)="goToJob(job)"
+            (mousemove)="positionTooltip($event)"
+            (mouseleave)="removeTooltip()">
             <td *ngFor="let column of column_names; index as i; last as isLast">
                 
                 {{ job[column] }}
 
-                <i *ngIf="isLast" class="fa fa-angle-right"></i>
+                <!--<i *ngIf="isLast" class="fa fa-angle-right"></i>-->
 
             </td>
         </tr>
     </tbody>
 </table>
+
+<span class="tr-tooltip">
+    View Details
+    <i class="fa fa-eye" aria-hidden="true"></i>
+</span>

@@ -1,19 +1,94 @@
-:host {
+/*:host {
     display: flex;
     flex-direction: column;
-    max-height: /*100%;*/ 700px;
+
     width: 100%;
     border: 0.1px #DCDCDC solid;
     background: #e8e8e8;
+}*/
+
+thead {
+  background-color: #E8E8E8;
 }
 
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 7px;
+tbody {
+  max-height: 700px !important;
 }
-  
-::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, .5);
-  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+
+tr td:first-child, tr th:first-child {
+  width: 15%;
+}
+
+/*tr td:last-child {
+  display: flex;
+  justify-content: space-between;
+}*/
+
+
+.table {
+  margin: 20px 0;
+}
+
+td, th {
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+th, td, .table, table {
+  border: 0.1px #DCDCDC solid;
+}
+
+table, thead, tbody, .table, tbody tr {
+  width: 100%;
+}
+
+table, tbody {
+  background-color: #fff;
+}
+
+thead, tbody tr {
+  display: table;
+  table-layout: fixed; /* even columns width , fix width of table too*/
+}
+
+table {
+  border-collapse: collapse;
+}
+
+thead {
+  text-align: left;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 20px);
+  padding: 0px 10px;
+  font-weight: bold;
+}
+
+tbody {
+  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.table-header i:hover {
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.tr-tooltip {
+  z-index:10;
+  display:none; 
+  padding: 5px 5px;
+  border-radius: 3px;
+  position: absolute;
+  color:#fff;
+  border:1px solid #DCDCDC; 
+  background:#000;
 }

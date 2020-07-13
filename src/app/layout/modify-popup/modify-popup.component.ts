@@ -37,8 +37,6 @@ export class ModifyPopupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
-
     switch(this.data['switch-key']) {
       case "channel-edit-row": {
         this.title = "Modify Channel Row";

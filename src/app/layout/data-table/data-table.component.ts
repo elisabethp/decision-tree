@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-data-table',
@@ -7,16 +7,36 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class DataTableComponent implements OnInit {
 
-  @Output() openModalTrigger = new EventEmitter<string>();
+  @Input() job: string = 'default';
+  job_keys = null;
+  column_names = ["Classad", "Value"]
 
   constructor() { }
 
   edit() {
     console.log('data-table');
-    this.openModalTrigger.emit('modify');
   }
 
-  ngOnInit(): void {
+  ngOnInit():void{
+    this.job_keys = Object.keys(this.job)
+  }
+
+  positionTooltip(e) {
+    var tooltipSpan: any;
+    tooltipSpan = document.getElementsByClassName('tr-tooltip')[0];
+    var x = e.clientX,
+        y = e.clientY;
+        
+    tooltipSpan.style.position = 'fixed';
+    tooltipSpan.style.display = 'inline-block';
+    tooltipSpan.style.top = (y + 10) + "px";
+    tooltipSpan.style.left = (x + 10) + "px";
+  }
+
+  removeTooltip() {
+    var tooltipSpan: any;
+    tooltipSpan = document.getElementsByClassName('tr-tooltip')[0];
+    tooltipSpan.style.display = 'none';
   }
 
 }
