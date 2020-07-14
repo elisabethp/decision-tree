@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { APIService } from '../api.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { APIService } from '../api.service';
   styleUrls: ['./all-job-page.component.css']
 })
 
-export class AllJobPageComponent implements OnInit, OnChanges {
+export class AllJobPageComponent implements OnInit  {
   
   @HostListener('document:all-job-page-click', ['$event'])
   onClick(ev: any) {

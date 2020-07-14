@@ -18,9 +18,15 @@ export class FilterPopupComponent implements OnInit {
   }
 
   onConfirm() {
+    var keyInput : any;
+    var valueInput : any
+
+    keyInput = document.getElementById('key-input');
+    valueInput = document.getElementById('value-input');
+
     this.filters.push({
-      "key": document.getElementById('key-input').value, 
-      "value": document.getElementById('value-input').value 
+      "key": keyInput.value, 
+      "value": valueInput.value 
     })
 
     var event = new CustomEvent(
