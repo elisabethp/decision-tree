@@ -47,7 +47,7 @@ export class AllJobPageComponent implements OnInit  {
     document.dispatchEvent(event);
   }
 
-  removeFilter(event, index) {
+  removeFilter(index) {
     this.filters.splice(index, 1);
     this.filtered_jobs = this.api.getAllJobs(null, this.filters);
     console.log(this.filters)
