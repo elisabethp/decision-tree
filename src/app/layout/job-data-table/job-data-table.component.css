@@ -13,6 +13,9 @@ thead {
 
 tbody {
   max-height: 700px !important;
+  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 tr td:first-child, tr th:first-child {
@@ -65,12 +68,6 @@ thead {
   width: calc(100% - 20px);
   padding: 0px 10px;
   font-weight: bold;
-}
-
-tbody {
-  display: block;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 .table-header i:hover {

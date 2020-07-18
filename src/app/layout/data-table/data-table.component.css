@@ -92,3 +92,10 @@ tbody tr:hover {
   border:1px solid #DCDCDC; 
   background:#000;
 }
+
+
+td:last-child {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

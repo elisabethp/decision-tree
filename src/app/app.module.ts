@@ -12,10 +12,11 @@ import { JobDataPageComponent } from './job-data-page/job-data-page.component';
 import { JobDataTableComponent } from './layout/job-data-table/job-data-table.component';
 import { ModifyPopupComponent } from './layout/modify-popup/modify-popup.component';
 import { FilterPopupComponent } from './layout/filter-popup/filter-popup.component';
-import { DecisionPopupComponent } from './layout/decision-popup/decision-popup.component';
 import { TableComponent } from './layout/table/table.component';
 import { ChannelDataComponent } from './layout/channel-data/channel-data.component';
 import { ItemRowComponent } from './layout/item-row/item-row.component';
+import { ModifyJobPopupComponent } from './layout/modify-job-popup/modify-job-popup.component';
+import { PageStateComponent } from './layout/page-state/page-state.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +30,11 @@ import { ItemRowComponent } from './layout/item-row/item-row.component';
     JobDataTableComponent,
     ModifyPopupComponent,
     FilterPopupComponent,
-    DecisionPopupComponent,
     TableComponent,
     ChannelDataComponent,
-    ItemRowComponent
+    ItemRowComponent,
+    ModifyJobPopupComponent,
+    PageStateComponent
   ],
   imports: [
     BrowserModule,

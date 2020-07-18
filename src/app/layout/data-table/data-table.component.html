@@ -8,7 +8,8 @@
         <tr
             *ngFor="let classad of job_keys"
             (mousemove)="positionTooltip($event)"
-            (mouseleave)="removeTooltip()">
+            (mouseleave)="removeTooltip()"
+            (click)="editRow(classad)">
             <td>
                 {{ classad }}
             </td>

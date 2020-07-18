@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { APIService } from '../../api.service';
+import { APIService } from '../../api/api.service';
 
 @Component({
   selector: 'app-table',

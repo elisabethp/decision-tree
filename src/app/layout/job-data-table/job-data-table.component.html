@@ -4,7 +4,7 @@
             <th *ngFor="let column of column_names">{{ column }}</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody (scroll)="scrolled($event)">
         <tr
             *ngFor="let job of jobs.data"
             (click)="goToJob(job)"

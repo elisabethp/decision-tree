@@ -18,12 +18,13 @@
 }
 
 #app-graphic-wrapper {
-    width: 300px;
+    width: 250px;
     height: auto;
 }
 
 #app-graphic-wrapper img {
     height: 100%;
+    width: 100%;
 }
 
 #user-info-wrapper {

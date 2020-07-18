@@ -61,6 +61,12 @@
 #search-wrapper {
     display: flex;
     cursor: pointer;
+    width: 15%;
+}
+
+#search-wrapper input {
+    width: 100%;
+    padding: 3px 5px;
 }
 
 #search-button {

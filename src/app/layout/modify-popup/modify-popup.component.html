@@ -19,7 +19,11 @@
                             <tr *ngFor="let column of data.column_names; index as i">
                                 <td>{{ column }}</td>
                                 <td>
-                                    <input data-edit-row="true" [value]="data.row[column]" type="text">
+                                    <input 
+                                        (keyup)='clearErrorField($event)'
+                                        data-edit-row="true" 
+                                        [value]="data.row[column]" 
+                                        type="text" >
                                 </td>
                             </tr>
                         </tbody>

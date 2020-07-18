@@ -1,4 +1,4 @@
-<div id='left-content'>
+<div *ngIf="isLoaded" id='left-content'>
     <span class="section-header">Browse Channels</span>
     <hr>  
         <app-item-row 
@@ -8,6 +8,13 @@
             (click)='goToChannel($event)'>
         </app-item-row>
 </div>
-<div id='right-content'>
+<div *ngIf="isLoaded" id='right-content'>
     <app-channel-data [channel]="selectedChannel" ></app-channel-data>
 </div>
+
+<app-page-state 
+    *ngIf="!isLoaded" 
+    [isLoaded]="isLoaded" 
+    [notFound]="notFound" 
+    [serverError]="serverError">
+</app-page-state>

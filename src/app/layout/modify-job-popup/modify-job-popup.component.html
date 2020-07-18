@@ -1,0 +1,64 @@
+<div id="modify-modal" class="modal">
+    <div class="modal-wrapper">
+        <div class="modal-header">
+            <span class="modal-title"> {{ title }} </span>
+            <span (click)="close()" class="close">&times;</span>
+        </div>
+
+        <div class="modal-content">
+            <div id="modify-content">
+                <div class="modal-section">
+                    <div class="modal-field-title">ClassAd</div>
+                    <span 
+                        data-edit-key="true" 
+                        class="classad-name"
+                        *ngIf='!isAddAction'>
+                            {{ classad }}
+                    </span>
+                    <input 
+                        (keyup)='clearErrorField($event)'
+                        data-edit-key="true" 
+                        id="key-input" 
+                        placeholder="Key" 
+                        type="text"
+                        *ngIf='isAddAction'>
+                </div>
+                
+                <div class="modal-section">
+                    <div class="modal-field-title">Value</div>
+                    <textarea 
+                        (keyup)='clearErrorField($event)'
+                        data-edit-value="true" 
+                        id="value-input" 
+                        placeholder="Value" 
+                        [value]="value" 
+                        type="text"></textarea>
+                </div>
+
+                <div class="modal-footer modal-section">
+                    <button (click)="validate()" id="confirm-modal">Submit</button>
+                </div>
+            </div>
+
+            <div id="modify-content-validate">
+                <p> Are you sure you would like to make this change?</p>
+                
+                <div class="modal-section">
+                    <div class="modal-field-title">ClassAd</div>
+                    <span>{{ new_key }}</span>
+                </div>
+                
+                <div class="modal-section">
+                    <div class="modal-field-title">Value</div>
+                    <span>{{ new_value }}</span>
+                </div>
+
+                <div class="modal-footer modal-section">
+                    <button (click)="sendNewRows()" id="confirm-modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+  
+</div>

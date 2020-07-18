@@ -1,0 +1,17 @@
+<div *ngIf="!notFound && !serverError" class="loading">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div class="error-section" *ngIf="notFound">
+    <p>
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        The job page you are searching for does not exist.
+    </p>
+</div>
+<div class="error-section" *ngIf="serverError">
+    <p>
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        A server error occurred.
+    </p>
+</div>

@@ -4,9 +4,14 @@
     border: 0.1px #DCDCDC solid;
     border-bottom: none;
     padding: 10px 10px;
+    word-break: break-word;
 }
 
 :host:hover {
     background-color: aliceblue;
     cursor: pointer;
+}
+
+span {
+    margin: 0 5px;
 }

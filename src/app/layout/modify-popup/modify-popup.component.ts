@@ -8,7 +8,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 })
 export class ModifyPopupComponent implements OnInit {
 
-  title = null;
+  title = "Modify Channel Row";
   param_name = null;
   old_param_value = null;
   new_param_value = null;
@@ -21,30 +21,32 @@ export class ModifyPopupComponent implements OnInit {
   validate() {
     this.values = [];
 
+    var isValid = true;
     var inputs : any;
     inputs = document.querySelectorAll('[data-edit-row]');
     console.log(inputs)
 
     for (var i = 0; i < inputs.length; i++) {
       this.values.push(inputs[i].value)
-    }
-
-    var visibleContent = document.getElementById('modify-content');
-    var invisibleContent = document.getElementById('modify-content-validate');
-
-    visibleContent.style.display = 'none';
-    invisibleContent.style.display = 'block'
-  }
-
-  ngOnInit(): void {
-    switch(this.data['switch-key']) {
-      case "channel-edit-row": {
-        this.title = "Modify Channel Row";
+      
+      if (inputs[i].value.length == 0) {
+        this.values = []
+        inputs[i].classList.add('error-input')
+        isValid = false;
         break;
       }
     }
 
+    if (isValid) {
+      var visibleContent = document.getElementById('modify-content');
+      var invisibleContent = document.getElementById('modify-content-validate');
+  
+      visibleContent.style.display = 'none';
+      invisibleContent.style.display = 'block'
+    }
   }
+
+  ngOnInit(): void {}
 
   close() {
     var event = new CustomEvent(
@@ -62,4 +64,7 @@ export class ModifyPopupComponent implements OnInit {
     this.close();
   }
 
+  clearErrorField(event) {
+    event.target.classList.remove('error-input');
+  }
 }

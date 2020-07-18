@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-page-tab',
@@ -16,7 +16,23 @@ export class PageTabComponent implements OnInit {
   search_input = null;
 
   @Output() tabTrigger = new EventEmitter<string>();
+  @HostListener('document:global-click', ['$event'])
+  onGlobalClick(ev: any) {
+    switch(ev.detail['switch-key']) {
+      case 'go-to-job': {
+        var oldSelectedTab = document.getElementsByClassName('selected-page-tab')[0];
+        oldSelectedTab.classList.remove('selected-page-tab');
 
+        var tab = document.querySelectorAll('[data-tab-index="1"]')[0];
+        tab.classList.add('selected-page-tab')
+
+        this.selected_tab = this.tab_names[1];
+        this.isSearchEnabled();
+
+        break;
+      }
+    }
+  }
   constructor() { 
     this.tab_names = ["Global System Status", "Job Parameters", "All Jobs"];
     this.router_names = ['/global-settings', '/job-settings', '/all-jobs'];
@@ -55,6 +71,7 @@ export class PageTabComponent implements OnInit {
     
     if (isJobParameters) {
       this.search_bar.style.visibility = "visible";
+      this.search_bar.childNodes[0].value = "";
     }
     else {
       this.search_bar.style.visibility = "hidden";

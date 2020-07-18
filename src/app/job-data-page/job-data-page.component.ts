@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { APIService } from '../api.service';
+import { APIService } from '../api/api.service';
 
 @Component({
   selector: 'app-job-data-page',
@@ -9,10 +9,31 @@ import { APIService } from '../api.service';
 })
 export class JobDataPageComponent implements OnInit {
 
+  @HostListener('document:job-data-page-reload', ['$event'])
+  onGlobalClick(ev: any) {
+    this.isLoaded = false;
+
+    this.api.getJobDetails(this.id)
+      .then((data) => {
+        console.log(data)
+        this.job_data = data;
+        this.isLoaded = true;
+      })
+      .catch((error) => {
+        this.notFound = error["notFound"]
+        this.serverError = error["serverError"]
+      })
+
+  }
+
   routeSub = null;
   id = null;
 
   job_data = null;
+
+  isLoaded = false;
+  notFound = false;
+  serverError = false;
 
   constructor(private route: ActivatedRoute, private api: APIService) { 
   
@@ -21,8 +42,33 @@ export class JobDataPageComponent implements OnInit {
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params['id'] //log the value of id
-      this.job_data = this.api.getJobDetails(this.id)
+      this.api.getJobDetails(this.id)
+        .then((data) => {
+          //console.log(data)
+          this.job_data = data;
+          this.isLoaded = true;
+        })
+        .catch((error) => {
+          this.notFound = error["notFound"]
+          this.serverError = error["serverError"]
+        })
     });
+  }
+
+  addRow() {
+    var event = new CustomEvent(
+      'global-click',
+      { detail: {
+          'switch-key': 'job-edit-row',
+          'action': 'add',
+          'job-row': {
+              "id": this.id
+          },
+        } 
+      }
+    );
+  
+    document.dispatchEvent(event);
   }
 
 }

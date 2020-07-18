@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ItemRowComponent implements OnInit {
   
   @Input() name: string = 'default';
+  @Input() icon: string = "fa fa-angle-right";
 
   constructor() { }
 

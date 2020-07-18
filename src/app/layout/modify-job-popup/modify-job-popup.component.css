@@ -1,0 +1,12 @@
+#modify-content-validate {
+    display: none;
+}
+
+textarea {
+    resize: none;
+    height: 150px;
+}
+
+span {
+    word-wrap:break-word;
+}

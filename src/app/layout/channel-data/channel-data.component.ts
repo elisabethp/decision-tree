@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ComponentFactoryResolver, Type, ViewChild, ViewContainerRef, ChangeDetectorRef, OnChanges, SimpleChanges } from '@angular/core';
 import { TableComponent } from '../table/table.component';
-import { APIService } from '../../api.service';
+import { APIService } from '../../api/api.service';
 
 @Component({
   selector: 'app-channel-data',
@@ -30,11 +30,21 @@ export class ChannelDataComponent implements OnInit, OnChanges {
   }
 
   prepareForExpansion(channel) {
-    this.channel_data = this.api.getChannelData(this.channel['name']);
+    
+    /*this.channel_data = this.api.getChannelData(this.channel['name']);
 
     for (var i = 0; i < this.channel_data["count"]; i++) {
       this.addComponent(TableComponent, i);
-    }
+    }*/
+
+    this.api.getChannelData(this.channel['name'])
+      .then((data) => {
+        this.channel_data = data;
+        
+        for (var i = 0; i < this.channel_data["count"]; i++) {
+          this.addComponent(TableComponent, i);
+        }
+      })
   }
 
   addComponent(componentClass: Type<any>, index: number) {

@@ -9,12 +9,29 @@ export class DataTableComponent implements OnInit {
 
   @Input() job: string = 'default';
   job_keys = null;
-  column_names = ["Classad", "Value"]
+  column_names = ["ClassAd", "Value"]
 
   constructor() { }
 
-  edit() {
+  editRow(classad_key) {
     console.log('data-table');
+    var clicked_item = this.job[classad_key];
+
+    var event = new CustomEvent(
+      'global-click',
+      { detail: {
+          'switch-key': 'job-edit-row',
+          'action': 'edit',
+          'job-row': {
+              "id": this.job['jobsubjobid'],
+              "key": classad_key,
+              "value": clicked_item
+          },
+        } 
+      }
+    );
+  
+    document.dispatchEvent(event);
   }
 
   ngOnInit():void{

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-job-data-table',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class JobDataTableComponent implements OnInit {
 
+  @Output() fetchJobs = new EventEmitter();
   @Input() jobs: any = 'default';
   column_names = null;
 
@@ -51,6 +52,13 @@ export class JobDataTableComponent implements OnInit {
     );
   
     document.dispatchEvent(event);
+  }
+
+  scrolled(o){
+      o = o.target;
+      if(o.offsetHeight + o.scrollTop == o.scrollHeight) {
+        this.fetchJobs.emit(this.jobs.data.length);
+      }
   }
 
 }
