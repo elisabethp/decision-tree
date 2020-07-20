@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +6,12 @@ import { throwError } from 'rxjs';
 
 export class APIService {
 
-  constructor() {}
+  host = null
+
+  constructor() {
+    this.host = 'http://131.225.154.146/'
+    //this.host = 'localhost'
+  }
 
   public async getJobDetails(jobID) {
     return new Promise(function(resolve, reject) {
@@ -37,7 +41,7 @@ export class APIService {
           }
       };
 
-      xhr.open("GET", 'http://localhost:5002/get-resource/job-data', true);
+      xhr.open("GET", 'http://' + this.host + ':5002/get-resource/job-data', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send();
     })  
@@ -119,7 +123,7 @@ export class APIService {
 
       };
 
-      xhr.open("POST", 'http://localhost:5002/jobs/', true);
+      xhr.open("POST", 'http://' + this.host + ':5002/jobs/', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send(JSON.stringify({
         "start": start,
@@ -147,7 +151,7 @@ export class APIService {
           }
       };
 
-      xhr.open("GET", 'http://localhost:5002/get-resource/channel-list', true);
+      xhr.open("GET", 'http://' + this.host + ':5002/get-resource/channel-list', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send();
     })  
@@ -193,7 +197,7 @@ export class APIService {
           }
       };
 
-      xhr.open("GET", 'http://localhost:5002/get-resource/' + file, true);
+      xhr.open("GET", 'http://' + this.host + ':5002/get-resource/' + file, true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send();
     })  
@@ -203,9 +207,7 @@ export class APIService {
     return new Promise(function(resolve, reject) {
       console.log(details)
       var xhr = new XMLHttpRequest();
-      var url = 'http://localhost:5002/update-job' /*details['action'] == 'edit'
-        ? 'http://localhost:5002/update-job'
-        : 'http://localhost:5002/add-job-classad'*/
+      var url = 'http://' + this.host + ':5002/update-job'
 
       xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
