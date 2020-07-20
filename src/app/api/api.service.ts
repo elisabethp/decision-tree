@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 export class APIService {
 
-  host = null
+  host = '131.225.154.146'
 
   constructor() {
     this.host = '131.225.154.146'
@@ -187,7 +187,7 @@ export class APIService {
 
       console.log("get the channelsssss")
       console.log('http://' + this.host + ':5002/get-resource/' + file)
-      
+
       var xhr = new XMLHttpRequest();
 
       xhr.onreadystatechange = function() {
