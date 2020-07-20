@@ -41,7 +41,7 @@ export class APIService {
           }
       };
 
-      xhr.open("GET", 'http://' + this.host + ':5002/get-resource/job-data', true);
+      xhr.open("GET", 'http://131.225.154.146:5002/get-resource/job-data', true);
       console.log(this.host)
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send();
