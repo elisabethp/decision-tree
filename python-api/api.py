@@ -128,4 +128,4 @@ api.add_resource(GetJobs, '/jobs/') # Route_1
 #api.add_resource(AddJobClassad, '/add-job-classad') # Route_1
 
 if __name__ == '__main__':
-     app.run(host="http://131.225.76.42/", port='5002')
+     app.run(host="131.225.154.146", port='5002')

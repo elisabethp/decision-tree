@@ -185,9 +185,14 @@ export class APIService {
         }
       }
 
+      console.log("get the channelsssss")
+      console.log('http://' + this.host + ':5002/get-resource/' + file)
+      
       var xhr = new XMLHttpRequest();
 
       xhr.onreadystatechange = function() {
+          console.log("get the channelsssss")
+
           if (this.readyState == 4 && this.status == 200) {
               console.log(this.responseText);
               resolve(JSON.parse(this.responseText))
