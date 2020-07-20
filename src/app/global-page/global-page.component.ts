@@ -21,6 +21,7 @@ export class GlobalPageComponent implements OnInit {
     //this.channelNames = api.getChannelNames();
     //this.selectedChannel = this.channelNames.data[0];
   
+    console.log("hello")
     this.api.getChannelNames()
       .then((channels) => {
         this.channelNames = channels
@@ -28,6 +29,8 @@ export class GlobalPageComponent implements OnInit {
         this.isLoaded = true;
       })
       .catch((error) => {
+        console.log("world")
+
         this.notFound = error["notFound"]
         this.serverError = error["serverError"]
       });
