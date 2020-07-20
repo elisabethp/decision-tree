@@ -9,8 +9,10 @@ export class APIService {
   host = null
 
   constructor() {
+    console.log("hello world")
     this.host = '131.225.154.146'
     //this.host = 'localhost'
+    console.log(this.host)
   }
 
   public async getJobDetails(jobID) {
@@ -139,6 +141,7 @@ export class APIService {
 
       xhr.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
+              console.log(this.responseText)
               //console.log(this.responseText);
               resolve(JSON.parse(this.responseText))          
           }
