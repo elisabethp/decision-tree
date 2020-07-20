@@ -9,7 +9,7 @@ export class APIService {
   host = null
 
   constructor() {
-    this.host = 'http://131.225.154.146/'
+    this.host = 'http://131.225.76.42/'
     //this.host = 'localhost'
   }
 
