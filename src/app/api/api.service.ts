@@ -9,10 +9,8 @@ export class APIService {
   host = null
 
   constructor() {
-    console.log("hello world")
     this.host = '131.225.154.146'
     //this.host = 'localhost'
-    console.log(this.host)
   }
 
   public async getJobDetails(jobID) {
@@ -44,6 +42,7 @@ export class APIService {
       };
 
       xhr.open("GET", 'http://' + this.host + ':5002/get-resource/job-data', true);
+      console.log(this.host)
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send();
     })  
@@ -155,6 +154,8 @@ export class APIService {
       };
 
       xhr.open("GET", 'http://' + this.host + ':5002/get-resource/channel-list', true);
+      console.log(this.host)
+
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send();
     })  
