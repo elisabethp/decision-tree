@@ -12,10 +12,10 @@ api = Api(app)
 cors = CORS(app)
 #app.config['CORS_HEADERS'] = 'Content-Type'
 
-from OpenSSL import SSL
-context = SSL.Context(SSL.PROTOCOL_TLSv1_2)
-context.use_privatekey_file('server.key')
-context.use_certificate_file('server.crt')
+#from OpenSSL import SSL
+#context = SSL.Context(SSL.PROTOCOL_TLSv1_2)
+#context.use_privatekey_file('server.key')
+#context.use_certificate_file('server.crt')
 
 class UpdateJob(Resource):
     def post(self):
@@ -133,4 +133,4 @@ api.add_resource(GetJobs, '/jobs/') # Route_1
 #api.add_resource(AddJobClassad, '/add-job-classad') # Route_1
 
 if __name__ == '__main__':
-     app.run(host="131.225.154.146", port='5002', ssl_context=context)
+     app.run(host="131.225.154.146", port='5002', ssl_context=('fermicloud013.fnal.gov-hostcert.pem','fermicloud013.fnal.gov-hostkey.pem'))
