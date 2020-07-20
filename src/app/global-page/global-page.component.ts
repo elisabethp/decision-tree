@@ -29,7 +29,7 @@ export class GlobalPageComponent implements OnInit {
         this.isLoaded = true;
       })
       .catch((error) => {
-        console.log("world")
+        console.log(error)
 
         this.notFound = error["notFound"]
         this.serverError = error["serverError"]
