@@ -41,7 +41,7 @@ export class APIService {
           }
       };
 
-      xhr.open("GET", 'http://131.225.154.146:5002/get-resource/job-data', true);
+      xhr.open("GET", 'https://131.225.154.146:5002/get-resource/job-data', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send();
     })  
@@ -123,7 +123,7 @@ export class APIService {
 
       };
 
-      xhr.open("POST", 'http://131.225.154.146:5002/jobs/', true);
+      xhr.open("POST", 'https://131.225.154.146:5002/jobs/', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send(JSON.stringify({
         "start": start,
@@ -152,7 +152,7 @@ export class APIService {
           }
       };
 
-      xhr.open("GET", 'http://131.225.154.146:5002/get-resource/channel-list', true);
+      xhr.open("GET", 'https://131.225.154.146:5002/get-resource/channel-list', true);
 
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send();
@@ -203,7 +203,7 @@ export class APIService {
           }
       };
 
-      xhr.open("GET", 'http://131.225.154.146:5002/get-resource/' + file, true);
+      xhr.open("GET", 'https://131.225.154.146:5002/get-resource/' + file, true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send();
     })  
@@ -213,7 +213,7 @@ export class APIService {
     return new Promise(function(resolve, reject) {
       console.log(details)
       var xhr = new XMLHttpRequest();
-      var url = 'http://131.225.154.146:5002/update-job'
+      var url = 'https://131.225.154.146:5002/update-job'
 
       xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
