@@ -12,7 +12,7 @@ export class UserService {
     for (var i = 0; i < attributes.length; i++) {
       var value = attributes[i]["values"][0]
 
-      switch(data[i]["name"]) {
+      switch(attributes[i]["name"]) {
         case "SHIB_NAME_FIRST": {
           this.setFirstName(value)
           break;

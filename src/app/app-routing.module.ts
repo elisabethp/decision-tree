@@ -12,25 +12,21 @@ const routes: Routes = [
       path: '',
       redirectTo: '/global-settings', 
       pathMatch: 'full',
-      //canActivate: [OnlyLoggedInUsersGuard] 
   },
   {
-    path: 'global-settings',
+    path: '/global-settings',
     component: GlobalPageComponent,
-    //canActivate: [OnlyLoggedInUsersGuard] 
   },
   {
-    path: 'job-settings',
-    //canActivate: [OnlyLoggedInUsersGuard],
+    path: '/job-settings',
     children:[
       { path: '', component: JobPageComponent},
       { path: ':id', component: JobDataPageComponent},
     ] 
   },
   {
-    path: 'all-jobs',
+    path: '/all-jobs',
     component: AllJobPageComponent,
-    //canActivate: [OnlyLoggedInUsersGuard] 
   },
 ];
 
