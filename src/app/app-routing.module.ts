@@ -16,11 +16,9 @@ const routes: Routes = [
   {
     path: 'global-settings',
     component: GlobalPageComponent,
-    pathMatch: 'full',
   },
   {
     path: 'job-settings',
-    pathMatch: 'full',
     children:[
       { path: '', component: JobPageComponent},
       { path: ':id', component: JobDataPageComponent},
@@ -29,7 +27,6 @@ const routes: Routes = [
   {
     path: 'all-jobs',
     component: AllJobPageComponent,
-    pathMatch: 'full',
   },
 ];
 

@@ -18,10 +18,6 @@ export class GlobalPageComponent implements OnInit {
   serverError = false;
 
   constructor(private api : APIService) {
-    //this.channelNames = api.getChannelNames();
-    //this.selectedChannel = this.channelNames.data[0];
-  
-    console.log("hello")
     this.api.getChannelNames()
       .then((channels) => {
         this.channelNames = channels
@@ -30,7 +26,6 @@ export class GlobalPageComponent implements OnInit {
       })
       .catch((error) => {
         console.log(error)
-
         this.notFound = error["notFound"]
         this.serverError = error["serverError"]
       });

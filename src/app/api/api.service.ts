@@ -108,7 +108,7 @@ export class APIService {
                 resolve(response);  
               }
               else {
-                console.log("returning all jobs")
+                //console.log("returning all jobs")
                 resolve(response);
               }
               
@@ -139,7 +139,6 @@ export class APIService {
 
       xhr.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-              console.log(this.responseText)
               //console.log(this.responseText);
               resolve(JSON.parse(this.responseText))          
           }
@@ -183,15 +182,10 @@ export class APIService {
         }
       }
 
-      console.log("get the channelsssss")
-
       var xhr = new XMLHttpRequest();
 
       xhr.onreadystatechange = function() {
-          console.log("get the channelsssss")
-
           if (this.readyState == 4 && this.status == 200) {
-              console.log(this.responseText);
               resolve(JSON.parse(this.responseText))
           }
           
@@ -211,7 +205,6 @@ export class APIService {
 
   public async postNewJobData(source, details) {
     return new Promise(function(resolve, reject) {
-      console.log(details)
       var xhr = new XMLHttpRequest();
       var url = 'https://131.225.154.146:5002/update-job'
 

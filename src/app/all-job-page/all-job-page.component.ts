@@ -11,10 +11,10 @@ export class AllJobPageComponent implements OnInit  {
   
   @HostListener('document:all-job-page-click', ['$event'])
   onClick(ev: any) {
-    console.log(ev);
+    //console.log(ev);
     switch(ev.detail['switch-key']) {
       case 'update-filters': {
-        console.log(ev.detail)
+        //console.log(ev.detail)
         this.filters = ev.detail['filters']
         this.isJobsLoaded = false;
 
@@ -51,8 +51,6 @@ export class AllJobPageComponent implements OnInit  {
   constructor(private api : APIService) { 
     this.api.getAllJobs(null, [], 0)
       .then((data) => {
-        console.log(data)
-
         this.all_jobs = data;
         this.filtered_jobs = data;
 

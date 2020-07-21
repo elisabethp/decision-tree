@@ -20,7 +20,7 @@ export class AppComponent {
   onGlobalClick(ev: any) {
     switch(ev.detail['switch-key']) {
       case 'channel-edit-row': {
-        console.log("channel-edit-row");
+        //console.log("channel-edit-row");
         this.addComponent(this.modifyModalClass, ev.detail);
         break;
       }
@@ -37,7 +37,7 @@ export class AppComponent {
         break;
       }
       case 'close-modal': {
-        console.log("close-modal");
+        //console.log("close-modal");
         this.container.clear();
         break;
       }
@@ -48,7 +48,7 @@ export class AppComponent {
   modifyModalClass = ModifyPopupComponent;
   filterModalClass = FilterPopupComponent;
   userService:UserService //= new UserService()
-  user = null
+  user:any = "null"
   
   applicationError = false
 
@@ -56,22 +56,20 @@ export class AppComponent {
     private router: Router, 
     private componentFactoryResolver: ComponentFactoryResolver,
     private api: APIService) {
-
       this.api.getUserInfo()
         .then((data) => {
             this.userService = new UserService(data)
-            console.log(this.userService.getUser())
             this.user = this.userService.getUser()
         })
         .catch((error) =>{
           this.applicationError = true
           console.log(error)
-          console.log("there is an error in the application log in making a user")
+          //console.log("there is an error in the application log in making a user")
         })
   }
 
   navigate(event) {
-    console.log(event)
+    //console.log(event)
     this.router.navigate([event]);
   }
 

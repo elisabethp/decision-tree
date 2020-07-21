@@ -37,7 +37,7 @@ export class PageTabComponent implements OnInit {
     this.tab_names = ["Global System Status", "Job Parameters", "All Jobs"];
     this.router_names = ['/global-settings', '/job-settings', '/all-jobs'];
 
-    console.log(window.location.pathname.includes(this.router_names[1]));
+    //console.log(window.location.pathname.includes(this.router_names[1]));
     this.selected_tab_index = this.matchRoute();
 
     this.selected_tab = this.tab_names[this.selected_tab_index];

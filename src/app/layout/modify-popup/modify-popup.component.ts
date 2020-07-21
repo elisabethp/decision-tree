@@ -24,7 +24,6 @@ export class ModifyPopupComponent implements OnInit {
     var isValid = true;
     var inputs : any;
     inputs = document.querySelectorAll('[data-edit-row]');
-    console.log(inputs)
 
     for (var i = 0; i < inputs.length; i++) {
       this.values.push(inputs[i].value)

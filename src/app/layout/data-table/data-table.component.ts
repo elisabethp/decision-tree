@@ -14,7 +14,6 @@ export class DataTableComponent implements OnInit {
   constructor() { }
 
   editRow(classad_key) {
-    console.log('data-table');
     var clicked_item = this.job[classad_key];
 
     var event = new CustomEvent(

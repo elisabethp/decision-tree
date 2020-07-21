@@ -15,7 +15,6 @@ export class JobDataPageComponent implements OnInit {
 
     this.api.getJobDetails(this.id)
       .then((data) => {
-        console.log(data)
         this.job_data = data;
         this.isLoaded = true;
       })

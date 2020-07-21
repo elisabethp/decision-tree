@@ -15,7 +15,6 @@ export class JobDataTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.column_names = this.jobs.columns
-    console.log(this.jobs)
   }
 
   getValues(obj){
@@ -41,7 +40,6 @@ export class JobDataTableComponent implements OnInit {
   }
 
   goToJob(job) {
-    console.log(job)
     var event = new CustomEvent(
       'global-click',
       { detail: {

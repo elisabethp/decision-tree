@@ -14,7 +14,6 @@ export class FilterPopupComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data)
     this.filters = this.data['filters']
   }
 
