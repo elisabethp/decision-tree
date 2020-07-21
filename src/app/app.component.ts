@@ -48,7 +48,8 @@ export class AppComponent {
   modifyModalClass = ModifyPopupComponent;
   filterModalClass = FilterPopupComponent;
   userService:UserService //= new UserService()
-
+  user = null
+  
   applicationError = false
 
   constructor(
@@ -60,6 +61,7 @@ export class AppComponent {
         .then((data) => {
             this.userService = new UserService(data)
             console.log(this.userService.getUser())
+            this.user = this.userService.getUser()
         })
         .catch((error) =>{
           this.applicationError = true
