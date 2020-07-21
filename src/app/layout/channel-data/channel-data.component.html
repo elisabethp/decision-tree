@@ -2,3 +2,9 @@
 <hr>
 <div #container>
 </div>
+<app-page-state 
+    *ngIf="!isLoaded" 
+    [isLoaded]="isJobsLoaded" 
+    [notFound]="jobsNotFound" 
+    [serverError]="jobsServerError">
+</app-page-state>

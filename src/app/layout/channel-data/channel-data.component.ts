@@ -14,6 +14,10 @@ export class ChannelDataComponent implements OnInit, OnChanges {
 
   channel_data = null;
 
+  isLoaded = false;
+  notFound = false; //doesn't apply here
+  serverError = false;
+
   constructor(private api : APIService, private componentFactoryResolver: ComponentFactoryResolver, private changeDetector : ChangeDetectorRef) { }
 
   ngOnInit(): void {}
@@ -30,21 +34,22 @@ export class ChannelDataComponent implements OnInit, OnChanges {
   }
 
   prepareForExpansion(channel) {
-    
-    /*this.channel_data = this.api.getChannelData(this.channel['name']);
-
-    for (var i = 0; i < this.channel_data["count"]; i++) {
-      this.addComponent(TableComponent, i);
-    }*/
+    this.isLoaded = false;
 
     this.api.getChannelData(this.channel['name'])
       .then((data) => {
+        this.isLoaded = true
         this.channel_data = data;
         
         for (var i = 0; i < this.channel_data["count"]; i++) {
           this.addComponent(TableComponent, i);
         }
       })
+      .catch((error) => {
+        console.log(error)
+        this.notFound = error["notFound"]
+        this.serverError = error["serverError"]
+      });
   }
 
   addComponent(componentClass: Type<any>, index: number) {

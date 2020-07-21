@@ -17,10 +17,6 @@ export class GlobalPageComponent implements OnInit {
   notFound = false; //doesn't apply here
   serverError = false;
 
-  isJobsLoaded = false;
-  jobsNotFound = false; //doesn't apply here
-  jobsServerError = false;
-
   constructor(private api : APIService) {
     this.api.getChannelNames()
       .then((channels) => {
