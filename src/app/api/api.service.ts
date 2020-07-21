@@ -236,4 +236,28 @@ export class APIService {
       }));
     })  
   }
+
+  public async getUserInfo() {
+    return new Promise(function(resolve, reject) {
+      var xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                resolve(JSON.parse(this.responseText))
+            }
+            
+            if (this.readyState == 4 && this.status == 500) {
+              reject({
+                  "serverError": true,
+                  "notFound": false
+              })
+            }
+        };
+
+      xhr.open("GET", 'https://fermicloud013.fnal.gov/Shibboleth.sso/Session', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send();
+
+    })
+  }
 }

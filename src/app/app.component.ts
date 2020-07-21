@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { ModifyPopupComponent } from './layout/modify-popup/modify-popup.component';
 import { ModifyJobPopupComponent } from './layout/modify-job-popup/modify-job-popup.component';
 import { FilterPopupComponent } from './layout/filter-popup/filter-popup.component';
+import { APIService } from './api/api.service';
+import { UserService } from 'src/app/auth/user.service'
 
 @Component({
   selector: 'app-root',
@@ -45,8 +47,26 @@ export class AppComponent {
   modifyJobModalClass = ModifyJobPopupComponent
   modifyModalClass = ModifyPopupComponent;
   filterModalClass = FilterPopupComponent;
+  userService:UserService //= new UserService()
 
-  constructor(private router: Router, private componentFactoryResolver: ComponentFactoryResolver) {}
+  applicationError = false
+
+  constructor(
+    private router: Router, 
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private api: APIService) {
+
+      this.api.getUserInfo()
+        .then((data) => {
+            this.userService = new UserService(data)
+            console.log(this.userService.getUser())
+        })
+        .catch((error) =>{
+          this.applicationError = true
+          console.log(error)
+          console.log("there is an error in the application log in making a user")
+        })
+  }
 
   navigate(event) {
     console.log(event)
