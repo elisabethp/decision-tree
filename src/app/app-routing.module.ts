@@ -9,9 +9,14 @@ import { JobDataPageComponent } from './job-data-page/job-data-page.component';
 
 const routes: Routes = [
   {
-      path: '',
-      redirectTo: '/global-settings', 
-      pathMatch: 'full',
+    path: '',
+    redirectTo: '/login', 
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    redirectTo: '/global-settings', 
+    pathMatch: 'full',
   },
   {
     path: 'global-settings',
