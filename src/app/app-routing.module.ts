@@ -14,19 +14,22 @@ const routes: Routes = [
       pathMatch: 'full',
   },
   {
-    path: '/global-settings',
+    path: 'global-settings',
     component: GlobalPageComponent,
+    pathMatch: 'full',
   },
   {
-    path: '/job-settings',
+    path: 'job-settings',
+    pathMatch: 'full',
     children:[
       { path: '', component: JobPageComponent},
       { path: ':id', component: JobDataPageComponent},
     ] 
   },
   {
-    path: '/all-jobs',
+    path: 'all-jobs',
     component: AllJobPageComponent,
+    pathMatch: 'full',
   },
 ];
 
