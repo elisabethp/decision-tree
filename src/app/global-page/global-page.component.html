@@ -9,7 +9,15 @@
         </app-item-row>
 </div>
 <div *ngIf="isLoaded" id='right-content'>
-    <app-channel-data [channel]="selectedChannel" ></app-channel-data>
+    <app-channel-data
+        *ngIf="isJobsLoaded"  
+        [channel]="selectedChannel"></app-channel-data>
+    <app-page-state 
+        *ngIf="!isJobsLoaded" 
+        [isLoaded]="isJobsLoaded" 
+        [notFound]="jobsNotFound" 
+        [serverError]="jobsServerError">
+    </app-page-state>
 </div>
 
 <app-page-state 
