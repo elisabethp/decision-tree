@@ -9,9 +9,7 @@
         </app-item-row>
 </div>
 <div *ngIf="isLoaded" id='right-content'>
-    <app-channel-data
-        *ngIf="isJobsLoaded"  
-        [channel]="selectedChannel"></app-channel-data>
+    <app-channel-data [channel]="selectedChannel"></app-channel-data>
 </div>
 
 <app-page-state 
