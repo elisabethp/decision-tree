@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 /dist
-/python-api
+/python-api/Python-3.5.2
 
 # compiled output
 /dist
