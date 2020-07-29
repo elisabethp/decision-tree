@@ -73,7 +73,6 @@ export class AppComponent {
   }
 
   navigate(event) {
-    //console.log(event)
     this.router.navigate([event]);
   }
 

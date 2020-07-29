@@ -42,59 +42,18 @@ export class APIService {
 
       xhr.open("GET", 'https://131.225.154.146:5002/get-resource/job-data', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.timeout = 20000; // Set timeout to 4 seconds (4000 milliseconds) 
+      xhr.ontimeout = function () { 
+        reject({
+          "serverError": true,
+          "notFound": false
+        })
+      }
       xhr.send();
     })  
   }
 
-  private filterJobs(jobs, filters) {
-    
-    var result = {
-      "count": jobs["count"],
-      "columns": jobs["columns"],
-      "data": []
-    }
-
-    for (var job in jobs["data"]) {
-      var currJob = jobs["data"][job]
-      var jobMetdata = this.getJobDetails(currJob['JOBSUBJOBID'])
-      var passesFilters = false;
-
-      for (var filter in filters) {
-        var currFilter = filters[filter]
-        
-        if (jobMetdata.hasOwnProperty(currFilter.key) && jobMetdata[currFilter.key] == currFilter.value){
-          passesFilters = true
-        }
-        else {
-          passesFilters = false
-          break;
-        }
-      }
-
-      if (passesFilters) {
-        result['data'].push(currJob)
-      }
-
-    }
-   
-    return result;
-  }
-
   public async getAllJobs(jobs, filters, start) {
-
-    /*var filterString = '';
-
-    for (var filter in filters) {
-      var currFilter = filters[filter]
-
-      if (filter != '0') {
-        filterString = filterString + " & ";
-      }
-
-      filterString = filterString + currFilter.key + ' == "' + currFilter.value + '"';
-    }
-
-    console.log(filterString);*/
 
     return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
@@ -124,6 +83,13 @@ export class APIService {
 
       xhr.open("POST", 'https://131.225.154.146:5002/jobs/', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
+      xhr.ontimeout = function () { 
+        reject({
+          "serverError": true,
+          "notFound": false
+        })
+      }
       xhr.send(JSON.stringify({
         "start": start,
         "count": 20,
@@ -153,6 +119,13 @@ export class APIService {
       xhr.open("GET", 'https://131.225.154.146:5002/get-resource/channel-list', true);
 
       xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
+      xhr.ontimeout = function () { 
+        reject({
+          "serverError": true,
+          "notFound": false
+        })
+      }
       xhr.send();
     })  
   }
@@ -198,11 +171,18 @@ export class APIService {
 
       xhr.open("GET", 'https://131.225.154.146:5002/get-resource/' + file, true);
       xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
+      xhr.ontimeout = function () { 
+        reject({
+          "serverError": true,
+          "notFound": false
+        })
+      }
       xhr.send();
     })  
   }
 
-  public async postNewJobData(source, details) {
+  public async postNewJobData(details) {
     return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
       var url = 'https://131.225.154.146:5002/update-job'
@@ -222,8 +202,14 @@ export class APIService {
 
       xhr.open("POST", url, true);
       xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
+      xhr.ontimeout = function () { 
+        reject({
+          "serverError": true,
+          "notFound": false
+        })
+      }
       xhr.send(JSON.stringify({
-          "source": source,
           "details": details
       }));
     })  
@@ -248,6 +234,13 @@ export class APIService {
 
       xhr.open("GET", 'https://fermicloud013.fnal.gov/Shibboleth.sso/Session', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
+      xhr.ontimeout = function () { 
+        reject({
+          "serverError": true,
+          "notFound": false
+        })
+      }
       xhr.send();
 
     })

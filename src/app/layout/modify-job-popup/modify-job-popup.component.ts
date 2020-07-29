@@ -11,6 +11,7 @@ export class ModifyJobPopupComponent implements OnInit {
   title = null
   values = []
   isAddAction = null
+  action = null
 
   data = null;
   value = null;
@@ -29,11 +30,16 @@ export class ModifyJobPopupComponent implements OnInit {
       : "Modify Classad"
 
     //console.log(this.data)
-    this.classad = this.data['job-row']['key']
-    this.value = this.isAddAction
-      ? ""
-      : this.data['job-row']['value'];
     this.id = this.data['job-row']['id']
+    this.classad = this.data['job-row']['key']
+    this.value = this.data['job-row']['value'];
+
+    if (this.isAddAction) {
+      this.value = ""
+      var removeButton:any = document.getElementById("remove-button")
+      removeButton.style.display = "none";
+    }
+    
   }
 
   close() {
@@ -48,7 +54,9 @@ export class ModifyJobPopupComponent implements OnInit {
     document.dispatchEvent(event);
   }
 
-  validate() {
+  submitChanges() {
+    this.action = this.isAddAction ? "add" : "modify";
+
     this.new_key = document.querySelectorAll('[data-edit-key]')[0];
     this.new_value = document.querySelectorAll('[data-edit-value]')[0];
     
@@ -58,7 +66,18 @@ export class ModifyJobPopupComponent implements OnInit {
       : this.new_key.innerText;
 
     this.new_value = this.new_value.value;
+    this.validate() 
+  }
 
+  remove() {
+    this.action = "remove"
+    this.new_key = this.data['job-row']['key'];
+    this.new_value = this.data['job-row']['value'];
+
+    this.validate();
+  }
+
+  validate() {
     if (this.new_key.length != 0 && this.new_value.length != 0) {
       var visibleContent = document.getElementById('modify-content');
       var invisibleContent = document.getElementById('modify-content-validate');
@@ -73,29 +92,36 @@ export class ModifyJobPopupComponent implements OnInit {
       if (this.new_value.length == 0) {
         document.querySelectorAll('[data-edit-value]')[0].classList.add('error-input');
       }
-    }
-    
+    }  
   }
 
   sendNewRows() {
     var obj = {};
 
-    obj['action'] = this.data['action']
+    obj['action'] = this.action
     obj['key'] = this.new_key
     obj['value'] = this.new_value
     obj['id'] = this.id
-    
-    var action = this.isAddAction
-          ? "Add Classad"
-          : "Modify Classad"
 
-    this.api.postNewJobData(action, obj)
+    var status:any = document.getElementById("submit-status")
+    var confirmButton:any = document.getElementById("confirm-modal")
+
+    status.innerText = "Submitting...";
+    confirmButton.disabled = true;
+
+    this.api.postNewJobData(obj)
       .then(() => {
         var event = new CustomEvent('job-data-page-reload');
         document.dispatchEvent(event);
+        
+        status.innerText = "Success!";
+        this.close()
+        confirmButton.disabled = false;
       })
-
-    this.close()
+      .catch((error) => {
+        status.innerText = "An error occurred. Please try again.";
+        confirmButton.disabled = false;
+      })
   }
 
   clearErrorField(event) {

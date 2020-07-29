@@ -81,7 +81,7 @@ export class PageTabComponent implements OnInit {
   performSearch(event) {
     var id = this.search_input.value;
     // if id is empty return red box?
-    this.tabTrigger.emit(this.router_names[1] + '/' + id);
+    this.tabTrigger.emit(this.router_names[1] + '/' + id);  
   }
 
   matchRoute(): number {

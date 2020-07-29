@@ -10,20 +10,7 @@ import { APIService } from '../api/api.service';
 export class JobDataPageComponent implements OnInit {
 
   @HostListener('document:job-data-page-reload', ['$event'])
-  onGlobalClick(ev: any) {
-    this.isLoaded = false;
-
-    this.api.getJobDetails(this.id)
-      .then((data) => {
-        this.job_data = data;
-        this.isLoaded = true;
-      })
-      .catch((error) => {
-        this.notFound = error["notFound"]
-        this.serverError = error["serverError"]
-      })
-
-  }
+  onGlobalClick(ev: any) { this.pullPageData() }
 
   routeSub = null;
   id = null;
@@ -35,24 +22,13 @@ export class JobDataPageComponent implements OnInit {
   serverError = false;
 
   constructor(private route: ActivatedRoute, private api: APIService) { 
-  
+    this.routeSub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      this.pullPageData()
+    })
   }
 
-  ngOnInit() {
-    this.routeSub = this.route.params.subscribe(params => {
-      this.id = params['id'] //log the value of id
-      this.api.getJobDetails(this.id)
-        .then((data) => {
-          //console.log(data)
-          this.job_data = data;
-          this.isLoaded = true;
-        })
-        .catch((error) => {
-          this.notFound = error["notFound"]
-          this.serverError = error["serverError"]
-        })
-    });
-  }
+  ngOnInit() {}
 
   addRow() {
     var event = new CustomEvent(
@@ -68,6 +44,21 @@ export class JobDataPageComponent implements OnInit {
     );
   
     document.dispatchEvent(event);
+  }
+
+  pullPageData() {
+    this.isLoaded = false;
+
+    this.api.getJobDetails(this.id)
+      .then((data) => {
+        //console.log(data)
+        this.job_data = data;
+        this.isLoaded = true;
+      })
+      .catch((error) => {
+        this.notFound = error["notFound"]
+        this.serverError = error["serverError"]
+      })
   }
 
 }

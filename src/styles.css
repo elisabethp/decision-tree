@@ -79,7 +79,7 @@ body {
     background-color: #fafafa;
     margin: auto;
     border: 1px solid #dcdcdc;
-    width: 30%;
+    width: 33%;
 }
 
 .modal-content {
@@ -112,11 +112,14 @@ body {
 }
 
 .modal-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
     margin-top: 35px;
-    align-items: flex-end;
 }
 
-#confirm-modal {
+.confirm-modal-button {
     width: 100px;
     height: 30px;
 }

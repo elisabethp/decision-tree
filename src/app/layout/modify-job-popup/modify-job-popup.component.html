@@ -36,12 +36,13 @@
                 </div>
 
                 <div class="modal-footer modal-section">
-                    <button (click)="validate()" id="confirm-modal">Submit</button>
+                    <button class="modal-button" (click)="submitChanges()">Submit</button>
+                    <button id="remove-button" class="modal-button" (click)="remove()">Remove</button>
                 </div>
             </div>
 
             <div id="modify-content-validate">
-                <p> Are you sure you would like to make this change?</p>
+                <p> Are you sure you would like to {{ action }} this classad?</p>
                 
                 <div class="modal-section">
                     <div class="modal-field-title">ClassAd</div>
@@ -50,11 +51,14 @@
                 
                 <div class="modal-section">
                     <div class="modal-field-title">Value</div>
-                    <span>{{ new_value }}</span>
+                    <div class="modal-value-section">
+                        <span>{{ new_value }}</span>
+                    </div>
                 </div>
 
                 <div class="modal-footer modal-section">
-                    <button (click)="sendNewRows()" id="confirm-modal">Confirm</button>
+                    <button class="modal-button" (click)="sendNewRows()" id="confirm-modal">Confirm</button>
+                    <span id="submit-status"></span>
                 </div>
             </div>
         </div>

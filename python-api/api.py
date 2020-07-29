@@ -20,7 +20,6 @@ cors = CORS(app)
 class UpdateJob(Resource):
     def post(self):
         json_data = request.get_json(force=True)
-        source = json_data['source']
         details = json_data['details']
         item = None
 
@@ -30,7 +29,6 @@ class UpdateJob(Resource):
             
             for i in range(len(data)):
                 if data[i]["jobsubjobid"] == details['id']:
-                    print(data[i])
                     job_index = i
 
             data[job_index][details['key']] = details['value']
