@@ -31,7 +31,11 @@ class UpdateJob(Resource):
                 if data[i]["jobsubjobid"] == details['id']:
                     job_index = i
 
-            data[job_index][details['key']] = details['value']
+            if details["action"] == "remove":
+                del data[job_index][details['key']] 
+            else:
+                data[job_index][details['key']] = details['value']
+
             item = data
 
 
