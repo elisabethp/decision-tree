@@ -42,7 +42,7 @@ export class APIService {
 
       xhr.open("GET", 'https://131.225.154.146:5002/get-resource/job-data', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.timeout = 20000; // Set timeout to 4 seconds (4000 milliseconds) 
+      xhr.timeout = 60000; // Set timeout to 4 seconds (4000 milliseconds) 
       xhr.ontimeout = function () { 
         reject({
           "serverError": true,
@@ -186,6 +186,39 @@ export class APIService {
     return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
       var url = 'https://131.225.154.146:5002/update-job'
+
+      xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                resolve(true)
+            }
+            
+            if (this.readyState == 4 && this.status == 500) {
+              reject({
+                  "serverError": true,
+                  "notFound": false
+              })
+            }
+        };
+
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
+      xhr.ontimeout = function () { 
+        reject({
+          "serverError": true,
+          "notFound": false
+        })
+      }
+      xhr.send(JSON.stringify({
+          "details": details
+      }));
+    })  
+  }
+
+  public async postNewChannelData(details) {
+    return new Promise(function(resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      var url = 'https://131.225.154.146:5002/update-channel'
 
       xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {

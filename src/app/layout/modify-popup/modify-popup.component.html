@@ -31,7 +31,7 @@
                 </form> 
 
                 <div class="modal-footer modal-section">
-                    <button (click)="validate()" id="confirm-modal">Submit</button>
+                    <button class="modal-button" (click)="validate()" id="confirm-modal">Submit</button>
                 </div>
             </div>
 
@@ -54,7 +54,8 @@
                     </tbody>
                 </table>
                 <div class="modal-footer modal-section">
-                    <button (click)="sendNewRows()" id="confirm-modal">Confirm</button>
+                    <button class="modal-button" (click)="sendNewRows()" id="confirm-modal">Confirm</button>
+                    <span id="submit-status"></span>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
-import { APIService } from '../../api/api.service';
+import { APIService } from 'src/app/api/api.service';
 
 @Component({
   selector: 'app-modify-job-popup',

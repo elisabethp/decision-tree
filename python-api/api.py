@@ -10,12 +10,6 @@ app = Flask(__name__)
 api = Api(app)
 
 cors = CORS(app)
-#app.config['CORS_HEADERS'] = 'Content-Type'
-
-#from OpenSSL import SSL
-#context = SSL.Context(SSL.PROTOCOL_TLSv1_2)
-#context.use_privatekey_file('server.key')
-#context.use_certificate_file('server.crt')
 
 class UpdateJob(Resource):
     def post(self):
@@ -30,6 +24,7 @@ class UpdateJob(Resource):
             for i in range(len(data)):
                 if data[i]["jobsubjobid"] == details['id']:
                     job_index = i
+                    break
 
             if details["action"] == "remove":
                 del data[job_index][details['key']] 
@@ -38,15 +33,43 @@ class UpdateJob(Resource):
 
             item = data
 
-
         with open('./assets/job-data.json', 'w') as f:
             json.dump(item, f)
 
 class UpdateChannel(Resource):
     def post(self):
         json_data = request.get_json(force=True)
-        source = json_data['source']
         details = json_data['details']
+        item = None
+
+        print(details)
+        with open('./assets/' + file + '.json') as json_file:
+            data = json.load(json_file)
+            data = data["data"]
+
+            table_index = None
+
+            #look for table name
+            for i in range(len(data)):
+                if (details["table"] == data[i]["name"]):
+                    table_index = i
+                    break
+
+            #go to row number and do stuff
+            if details["action"] == "add":
+                size = len(data[table_index])
+                data[table_index][size] = details["obj"] 
+
+            if details["action"] == "modify":
+                data[table_index][details["row_index"]] = details["obj"] 
+            
+            if details["action"] == "remove":
+                del data[table_index][details["row_index"]]
+
+            item = data
+        
+        with open('./assets/' + file + '.json', 'w') as f:
+            json.dump(item, f)
 
 class GetResource(Resource):
     def get(self, file):
@@ -75,26 +98,12 @@ class GetJobs(Resource):
 
         with open('./assets/all-jobs.json') as json_file:
             data = json.load(json_file)
-            #df = pd.DataFrame(data['data'])
-            
-            '''
-            if (len(filters) > 0) {
-                with open('./assets/job-data.json') as json_file:
-                    data = json.load(json_file)
-                    df = pd.DataFrame(data['data'])
-                    
-                    for filter in filters:
-                        print(filter)
-                        df = df.loc[df[filter["key"]] == filter["value"]]
-            }
-            '''
 
             if (len(filters) > 0):
                 result_data = []
 
                 for job in data["data"]:
                     
-                    #print(metadata)
                     jobMetdata = None 
                     id = job['JOBSUBJOBID']
 

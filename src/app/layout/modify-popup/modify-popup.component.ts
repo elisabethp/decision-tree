@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { APIService } from 'src/app/api/api.service';
 
 @Component({
   selector: 'app-modify-popup',
@@ -16,7 +16,7 @@ export class ModifyPopupComponent implements OnInit {
   data = null;
   values = []
 
-  constructor() { }
+  constructor(private api : APIService) { }
 
   validate() {
     this.values = [];
@@ -60,7 +60,36 @@ export class ModifyPopupComponent implements OnInit {
   }
 
   sendNewRows() {
-    this.close();
+    var obj = {}
+
+    obj["action"] = "modify"
+    obj["table"] = this.data["table_name"];
+    obj["row_index"] = this.data["index"];
+
+    for (var i = 0; i < this.data.column_names.length; i++) {
+      obj["obj"][this.data["column_names"][i]] = this.values[i] 
+    }
+    
+    var status:any = document.getElementById("submit-status")
+    var confirmButton:any = document.getElementById("confirm-modal")
+
+    status.innerText = "Submitting...";
+    confirmButton.disabled = true;
+
+    this.api.postNewChannelData(obj)
+      .then(() => {
+        /*var event = new CustomEvent('job-data-page-reload');
+        document.dispatchEvent(event);*/
+        
+        status.innerText = "Success!";
+        this.close()
+        confirmButton.disabled = false;
+      })
+      .catch((error) => {
+        status.innerText = "An error occurred. Please try again.";
+        confirmButton.disabled = false;
+      })
+
   }
 
   clearErrorField(event) {

@@ -3,13 +3,16 @@
         <span class="section-header">Add Classad</span>
         <i (click)="addRow()" class="fa fa-plus-circle"></i>
     </div>
-    <hr>  
+    <hr>
+    <br>
     <span class="section-header">Decision Data</span>
     <hr> 
     <p>No Decision Available</p>
 </div>
 <div *ngIf="isLoaded" id='right-content'>
-    <span class="section-header">Job Data</span>
+    <div class="content-header">
+        <span class="section-header">Job Data</span>
+    </div>
     <hr> 
     <app-data-table [job]="job_data"></app-data-table>
 </div>
