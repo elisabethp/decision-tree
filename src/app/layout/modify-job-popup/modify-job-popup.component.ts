@@ -59,7 +59,7 @@ export class ModifyJobPopupComponent implements OnInit {
 
     this.new_value = this.new_value.value;
 
-    if (this.new_key.length != 0 && this.new_value != 0) {
+    if (this.new_key.length != 0 && this.new_value.length != 0) {
       var visibleContent = document.getElementById('modify-content');
       var invisibleContent = document.getElementById('modify-content-validate');
   

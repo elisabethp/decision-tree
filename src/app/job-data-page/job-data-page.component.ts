@@ -61,7 +61,7 @@ export class JobDataPageComponent implements OnInit {
           'switch-key': 'job-edit-row',
           'action': 'add',
           'job-row': {
-              "id": this.id
+              "id": this.job_data["jobsubjobid"]
           },
         } 
       }
