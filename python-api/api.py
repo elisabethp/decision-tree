@@ -28,23 +28,6 @@ class UpdateJob(Resource):
         with open('./assets/job-data.json') as json_file:
             data = json.load(json_file)
             
-            '''
-            df = pd.DataFrame(data)
-            df.set_index('jobsubjobid', inplace=True, drop=False)
-
-            if details['key'] in df.columns:
-                df.loc[df.index == details['id'], details['key']] = details['value']
-            else:
-                df[details['key']] = np.nan
-                df.at[df.index == details['id'], details['key']] = details['value']
-                ##df.loc[df.index == details['id'], details['key']] = details['value']
-                print(details['value'])
-
-            #df.loc[df['jobsubjobid'] == details['id'], [details['key']]] = details['value']
-            #item = [{**x[i]} for i, x in df.stack().groupby(level=0)]
-            df.to_json('./assets/job-data.json', orient='records')
-            '''
-
             for i in range(len(data)):
                 if data[i]["jobsubjobid"] == details['id']:
                     print(data[i])

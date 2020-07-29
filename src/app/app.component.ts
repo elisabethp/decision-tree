@@ -18,6 +18,8 @@ export class AppComponent {
   
   @HostListener('document:global-click', ['$event'])
   onGlobalClick(ev: any) {
+          console.log(ev.detail);
+
     switch(ev.detail['switch-key']) {
       case 'channel-edit-row': {
         //console.log("channel-edit-row");
