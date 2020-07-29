@@ -28,6 +28,7 @@ class UpdateJob(Resource):
         with open('./assets/job-data.json') as json_file:
             data = json.load(json_file)
             
+            '''
             df = pd.DataFrame(data)
             df.set_index('jobsubjobid', inplace=True, drop=False)
 
@@ -42,9 +43,19 @@ class UpdateJob(Resource):
             #df.loc[df['jobsubjobid'] == details['id'], [details['key']]] = details['value']
             #item = [{**x[i]} for i, x in df.stack().groupby(level=0)]
             df.to_json('./assets/job-data.json', orient='records')
+            '''
 
-        #with open('./assets/job-data.json', 'w') as f:
-        #    json.dump(item, f)
+            for i in range(len(data)):
+                if data[i]["jobsubjobid"] == details['id']:
+                    print(data[i])
+                    job_index = i
+
+            data[job_index][details['key']] = details['value']
+            item = data
+
+
+        with open('./assets/job-data.json', 'w') as f:
+            json.dump(item, f)
 
 class UpdateChannel(Resource):
     def post(self):

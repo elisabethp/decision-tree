@@ -49,7 +49,6 @@ export class UserService {
     this.session_token = token
   }
 
-
   getUser(){
     return {
       username: this.username,

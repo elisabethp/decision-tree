@@ -8,6 +8,8 @@ item = None
 #if for a channel,
 
 #if for a job,
+
+'''
 with open('./assets/job-data.json') as json_file:
     id = '"34588911.0@jobsub01.fnal.gov"'
     key = "accountinggroup"
@@ -25,17 +27,43 @@ with open('./assets/job-data.json') as json_file:
     print(df.loc[df.index == id]['okokok'])
     print(df.at[id, 'okokok'])
     #print(df)
-    df.to_json('okkkkkkkk.json', orient='records')
+    #df.to_json('okkkkkkkk.json', orient='records')
 
     #df.loc[df['jobsubjobid'] == id, [key]] = value
 
-    #item = [{**x[i]} for i, x in df.stack().groupby(level=0)]
+    item = [{**x[i]} for i, x in df.stack().groupby(level=0)]
 
-#with open('job-data.json', 'w') as f:
-    #json.dump(item, f)
-
+with open('assets/job-data.json', 'w') as f:
+    json.dump(item, f)
+'''
 
 #df.to_json('job-data-copy.json', orient='records')
 
 #df = pd.DataFrame(data)
 #print(df.loc[df['accountinggroup'] == 'noooooo'])
+
+data = None 
+
+with open('./assets/job-data.json', ) as json_file:
+    data = json.load(json_file)
+
+    job_index = None
+    id = '"34588911.0@jobsub01.fnal.gov"'
+    key = "hello"
+    value = "value"
+
+    for i in range(len(data)):
+        if data[i]["jobsubjobid"] == id:
+            print(data[i])
+            job_index = i
+
+    data[job_index][key] = value
+
+    
+with open('./assets/job-data.json', "w") as json_file:
+    json.dump(data, json_file)
+
+print("done")
+
+
+

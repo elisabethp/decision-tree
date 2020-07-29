@@ -47,8 +47,9 @@ export class AppComponent {
   modifyJobModalClass = ModifyJobPopupComponent
   modifyModalClass = ModifyPopupComponent;
   filterModalClass = FilterPopupComponent;
-  userService:UserService //= new UserService()
-  user:any = "null"
+  
+  userService:UserService;
+  user:any = "null";
   
   applicationError = false
 
@@ -56,6 +57,7 @@ export class AppComponent {
     private router: Router, 
     private componentFactoryResolver: ComponentFactoryResolver,
     private api: APIService) {
+      
       this.api.getUserInfo()
         .then((data) => {
             this.userService = new UserService(data)

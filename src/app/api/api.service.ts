@@ -10,7 +10,6 @@ export class APIService {
 
   constructor() {
     this.host = '131.225.154.146'
-    //this.host = 'localhost'
   }
 
   public async getJobDetails(jobID) {

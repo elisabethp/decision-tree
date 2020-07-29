@@ -29,39 +29,6 @@ body {
     border-bottom: 0.1px #DCDCDC solid;
 }
 
-/*.table-header div:not(.table-separator) {
-    height: calc(100% - 15px);
-}
-
-.table-header.table-field {
-    padding-right: 0px;
-}
-
-.table-field {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-between;
-    padding: 15px 15px 0 15px;
-}
-
-.table-field:hover {
-    background-color: aliceblue;
-}
-
-.table-separator {
-    height: 100%;
-    width: 1px;
-    background-color: #DCDCDC;
-}
-
-.width-50 {
-    width: 50%;
-}
-
-.width-100 {
-    width: 100%;
-}*/
-
 .bg-color-main {
     background-color: #FAFAFA;
 }
@@ -77,24 +44,6 @@ body {
 .content-border {
     border: 0.1px #DCDCDC solid;
 }
-
-/*.bold {
-    font-weight: bold;
-}
-
-.data-table-content {
-    overflow-y: scroll;
-}
-
-.header-button {
-    width: 50px;
-    height: 30px !important;
-}
-
-.header-button button {
-    width: 100%;
-    height: 100%;
-}*/
 
 /* The Modal (background) */
 .modal {
@@ -217,17 +166,6 @@ app-item-row:last-child {
     padding-left: 10px;
     font-weight: bold;
 }
-
-/*::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 7px;
-}
-    
-::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, .5);
-    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-}*/
 
 .job-details-title-header {
     flex-grow: .3 !important;

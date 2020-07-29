@@ -5,7 +5,6 @@ import { GlobalPageComponent } from './global-page/global-page.component';
 import { JobPageComponent } from './job-page/job-page.component';
 import { AllJobPageComponent } from './all-job-page/all-job-page.component';
 import { JobDataPageComponent } from './job-data-page/job-data-page.component';
-//import { OnlyLoggedInUsersGuard } from './auth/loggedin.service';
 
 const routes: Routes = [
   {
