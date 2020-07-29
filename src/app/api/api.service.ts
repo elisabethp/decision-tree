@@ -133,7 +133,27 @@ export class APIService {
   public async getChannelData(channel) {
     return new Promise(function(resolve, reject) {
 
-      var file = this.getFileName(channel)
+      var file = '';
+
+      switch (channel.toLowerCase()) {
+        case 'gce': {
+          file = 'gce-transforms';
+          break;
+        }
+        case 'nersc': {
+          file = 'nersc-transforms';
+          break;
+        }
+        case 'aws_calculations_with_source_proxy': {
+          file = 'aws-calc-transforms';
+          break;
+        }
+        case 'resource_request': {
+          //return [];
+          break;
+        }
+      }
+
       var xhr = new XMLHttpRequest();
 
       xhr.onreadystatechange = function() {
@@ -197,6 +217,28 @@ export class APIService {
 
   public async postNewChannelData(channel, details) {
     return new Promise(function(resolve, reject) {
+
+      var file = '';
+
+      switch (channel.toLowerCase()) {
+        case 'gce': {
+          file = 'gce-transforms';
+          break;
+        }
+        case 'nersc': {
+          file = 'nersc-transforms';
+          break;
+        }
+        case 'aws_calculations_with_source_proxy': {
+          file = 'aws-calc-transforms';
+          break;
+        }
+        case 'resource_request': {
+          //return [];
+          break;
+        }
+      }
+
       var xhr = new XMLHttpRequest();
       var url = 'https://131.225.154.146:5002/update-channel'
 
@@ -224,7 +266,7 @@ export class APIService {
       }
       
       xhr.send(JSON.stringify({
-          "file": this.getFileName(channel),
+          "file": file,
           "details": details
       }));
     })  
@@ -261,7 +303,7 @@ export class APIService {
     })
   }
 
-  private getFileName(channel) {
+  public getFileName(channel) {
     var file = '';
 
       switch (channel.toLowerCase()) {

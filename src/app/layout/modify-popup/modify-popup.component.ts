@@ -64,7 +64,7 @@ export class ModifyPopupComponent implements OnInit {
 
     obj["action"] = "modify"
     obj["table"] = this.data["table_name"];
-    obj["row_index"] = this.data["index"];
+    obj["row_index"] = parseInt(this.data["index"]);
     obj["obj"] = {}
 
     for (var i = 0; i < this.data.column_names.length; i++) {

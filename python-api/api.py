@@ -59,13 +59,13 @@ class UpdateChannel(Resource):
             #go to row number and do stuff
             if details["action"] == "add":
                 size = len(data[table_index])
-                data[table_index][size] = details["obj"] 
+                data[table_index]["row_data"][size] = details["obj"] 
 
             if details["action"] == "modify":
-                data[table_index][details["row_index"]] = details["obj"] 
+                data[table_index]["row_data"][details["row_index"]] = details["obj"] 
             
             if details["action"] == "remove":
-                del data[table_index][details["row_index"]]
+                del data[table_index]["row_data"][details["row_index"]]
 
             item = data
         
