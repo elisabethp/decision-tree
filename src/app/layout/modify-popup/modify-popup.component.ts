@@ -65,6 +65,7 @@ export class ModifyPopupComponent implements OnInit {
     obj["action"] = "modify"
     obj["table"] = this.data["table_name"];
     obj["row_index"] = this.data["index"];
+    obj["obj"] = {}
 
     for (var i = 0; i < this.data.column_names.length; i++) {
       obj["obj"][this.data["column_names"][i]] = this.values[i] 
@@ -76,7 +77,7 @@ export class ModifyPopupComponent implements OnInit {
     status.innerText = "Submitting...";
     confirmButton.disabled = true;
 
-    this.api.postNewChannelData(obj)
+    this.api.postNewChannelData(this.data["channel"]["name"], obj)
       .then(() => {
         /*var event = new CustomEvent('job-data-page-reload');
         document.dispatchEvent(event);*/

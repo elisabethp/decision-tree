@@ -39,6 +39,7 @@ class UpdateJob(Resource):
 class UpdateChannel(Resource):
     def post(self):
         json_data = request.get_json(force=True)
+        file = json_data["file"]
         details = json_data['details']
         item = None
 
