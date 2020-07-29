@@ -45,8 +45,8 @@ class UpdateChannel(Resource):
 
         print(details)
         with open('./assets/' + file + '.json') as json_file:
-            data = json.load(json_file)
-            data = data["data"]
+            data_wrapper = json.load(json_file)
+            data = data_wrapper["data"]
 
             table_index = None
 
@@ -67,10 +67,10 @@ class UpdateChannel(Resource):
             if details["action"] == "remove":
                 del data[table_index]["row_data"][details["row_index"]]
 
-            item = data
+            item = data_wrapper
         
         with open('./assets/' + file + '.json', 'w') as f:
-            json.dump(item, f)
+            obj = json.dump(item, f)
 
 class GetResource(Resource):
     def get(self, file):
