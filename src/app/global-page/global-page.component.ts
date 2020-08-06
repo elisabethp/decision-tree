@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { APIService } from '../api/api.service';
 
 @Component({
@@ -7,6 +7,9 @@ import { APIService } from '../api/api.service';
   styleUrls: ['./global-page.component.css']
 })
 export class GlobalPageComponent implements OnInit {
+
+  @HostListener('document:global-page-reload', ['$event'])
+  onGlobalClick(ev: any) { this.pullPageData() }
 
   @Output() openModalTrigger = new EventEmitter<string>();
   
@@ -18,6 +21,21 @@ export class GlobalPageComponent implements OnInit {
   serverError = false;
 
   constructor(private api : APIService) {
+    this.pullPageData()
+  }
+
+  ngOnInit(): void {}
+
+
+  goToChannel(event) {
+    var target = event.target;
+    var channel_index = target.getAttribute("channel");
+    this.selectedChannel = this.channelNames.data[channel_index];
+  }
+
+  pullPageData() {
+    this.isLoaded = false;
+
     this.api.getChannelNames()
       .then((channels) => {
         this.channelNames = channels
@@ -29,15 +47,6 @@ export class GlobalPageComponent implements OnInit {
         this.notFound = error["notFound"]
         this.serverError = error["serverError"]
       });
-  }
-
-  ngOnInit(): void {}
-
-
-  goToChannel(event) {
-    var target = event.target;
-    var channel_index = target.getAttribute("channel");
-    this.selectedChannel = this.channelNames.data[channel_index];
   }
 
 }

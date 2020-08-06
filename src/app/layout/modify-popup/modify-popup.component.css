@@ -16,6 +16,7 @@
 
 table {
     width: 100%;
+    border-spacing: 0;
 }
 
 tbody, table {
@@ -51,4 +52,13 @@ tbody {
 
 table, thead, tbody, .table, tbody tr {
     width: 100%;
+}
+
+.modal select {
+    width: 60%;
+}
+
+textarea {
+    resize: none;
+    height: 48px;
 }

@@ -12,18 +12,38 @@
                         <thead>
                             <tr>
                                 <th>Parameter Name</th>
+                                <th>Parameter Type</th>
                                 <th>Parameter Value</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let column of data.column_names; index as i">
+                            <tr valign="top" *ngFor="let column of data.column_names; index as i">
                                 <td>{{ column }}</td>
                                 <td>
-                                    <input 
+                                    <select
+                                        (change)="clearErrorField($event)" 
+                                        data-edit-type="true">
+                                        <option id="" value="">Select...</option>
+                                        <option 
+                                            [attr.selected]= "getValueType(data.row[column]) == 'string' ? '' : null"
+                                            value="string">String</option>
+                                        <option 
+                                            [attr.selected] = "getValueType(data.row[column]) == 'integer' ? '' : null"
+                                            value="integer">Integer</option>
+                                        <option 
+                                            [attr.selected] = "getValueType(data.row[column]) == 'float' ? '' : null"
+                                            value="float">Float</option>
+                                        <option 
+                                            [attr.selected] = "getValueType(data.row[column]) == 'boolean' ? '' : null"
+                                            value="boolean">Boolean</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <textarea 
                                         (keyup)='clearErrorField($event)'
                                         data-edit-row="true" 
                                         [value]=data.row[column] 
-                                        type="text" >
+                                        type="text" ></textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -41,12 +61,14 @@
                     <thead>
                         <tr>
                             <th>Parameter Name</th>
+                            <th>Parameter Type</th>
                             <th>Parameter Value</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let column of data.column_names; index as i">
+                        <tr valign="top" *ngFor="let column of data.column_names; index as i">
                             <td>{{ column }}</td>
+                            <td>{{ types[i] }}</td>
                             <td>
                                 {{ values[i] }}
                             </td>

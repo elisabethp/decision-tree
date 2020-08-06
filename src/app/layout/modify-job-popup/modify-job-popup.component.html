@@ -8,7 +8,7 @@
         <div class="modal-content">
             <div id="modify-content">
                 <div class="modal-section">
-                    <div class="modal-field-title">ClassAd</div>
+                    <div class="modal-field-title">Classad</div>
                     <span 
                         data-edit-key="true" 
                         class="classad-name"
@@ -25,18 +25,7 @@
                 </div>
                 
                 <div class="modal-section">
-                    <div class="modal-field-title">Value</div>
-                    <textarea 
-                        (keyup)='clearErrorField($event)'
-                        data-edit-value="true" 
-                        id="value-input" 
-                        placeholder="Value" 
-                        [value]="value" 
-                        type="text"></textarea>
-                </div>
-
-                <div class="modal-section">
-                    <div class="modal-field-title">Value Type</div>
+                    <div class="modal-field-title">Classad Type</div>
                     <select
                         (change)="clearErrorField($event)" 
                         data-edit-type="true">
@@ -46,6 +35,17 @@
                         <option value="float">Float</option>
                         <option value="boolean">Boolean</option>
                     </select>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-field-title">Classad Value</div>
+                    <textarea 
+                        (keyup)='clearErrorField($event)'
+                        data-edit-value="true" 
+                        id="value-input" 
+                        placeholder="Value" 
+                        [value]="value" 
+                        type="text"></textarea>
                 </div>
 
                 <div class="modal-footer modal-section">

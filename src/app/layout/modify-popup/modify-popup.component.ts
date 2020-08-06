@@ -14,26 +14,40 @@ export class ModifyPopupComponent implements OnInit {
   new_param_value = null;
 
   data = null;
+  types = []
   values = []
 
   constructor(private api : APIService) { }
 
   validate() {
     this.values = [];
+    this.types = [];
 
     var isValid = true;
-    var inputs : any;
-    inputs = document.querySelectorAll('[data-edit-row]');
+    var type_inputs : any;
+    var value_inputs : any;
 
-    for (var i = 0; i < inputs.length; i++) {
-      this.values.push(inputs[i].value)
+    type_inputs = document.querySelectorAll('[data-edit-type]');
+    value_inputs = document.querySelectorAll('[data-edit-row]');
+
+    for (var i = 0; i < value_inputs.length; i++) {
+      this.values.push(this.isTypedCorrectly(value_inputs[i].value, type_inputs[i].value))
+      this.types.push(type_inputs[i].value)
       
-      if (inputs[i].value.length == 0) {
+      if (value_inputs[i].value.length == 0) {
         this.values = []
-        inputs[i].classList.add('error-input')
+        value_inputs[i].classList.add('error-input')
         isValid = false;
         break;
       }
+
+      if (!this.isTypedCorrectly(value_inputs[i].value, type_inputs[i].value)) {
+        this.types = []
+        type_inputs[i].classList.add('error-input')
+        isValid = false;
+        break;
+      }
+
     }
 
     if (isValid) {
@@ -79,8 +93,8 @@ export class ModifyPopupComponent implements OnInit {
 
     this.api.postNewChannelData(this.data["channel"]["name"], obj)
       .then(() => {
-        /*var event = new CustomEvent('job-data-page-reload');
-        document.dispatchEvent(event);*/
+        var event = new CustomEvent('global-page-reload');
+        document.dispatchEvent(event);
         
         status.innerText = "Success!";
         this.close()
@@ -91,6 +105,67 @@ export class ModifyPopupComponent implements OnInit {
         confirmButton.disabled = false;
       })
 
+  }
+
+  getValueType(value) : string {
+    var result: string;
+
+    result = typeof(value)
+    
+    if (result == "number") {
+      result = '"' + value + '"'
+      result = result.indexOf('.') == -1
+        ? "integer"
+        : "float";
+    }
+
+    return result;
+  }
+
+  isTypedCorrectly(value, type) : boolean {
+    try {
+      switch(type) {
+        case "string": { //string
+          value = String(value)
+          break;
+        }
+        case "integer": { //integer
+          value = parseInt(value)
+          
+          if (isNaN(value)) {
+            throw Error;
+          }
+
+          break;
+        }
+        case "float": { //float
+          value = parseFloat(value)
+          
+          if (isNaN(value)) {
+            throw Error;
+          }
+          
+          break;
+        }
+        case "boolean": { //boolean
+          if (value.toLowerCase() == "true" ||
+                value.toLowerCase() == "false")  {
+              value = value.toLowerCase() == "true"
+              break;
+          }
+          throw Error;
+        }
+        default: {
+          throw Error;
+        }
+      }
+
+      return value;
+    }
+    catch {
+      document.querySelectorAll('[data-edit-type]')[0].classList.add('error-input');
+      return false
+    }
   }
 
   clearErrorField(event) {
