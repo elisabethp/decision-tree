@@ -57,59 +57,59 @@
             "row_data": [
                 { 
                     "EntryName": "CMSHTPC_T3_US_NERSC_Cori", 
-                    "FigureOfMerit": "1.3125"
+                    "PricePerformance": "1.3125"
                 },
                 { 
                     "EntryName": "CMSHTPC_T3_US_NERSC_Cori_SL6_PREM", 
-                    "FigureOfMerit": "2.625"
+                    "PricePerformance": "2.625"
                 },
                 { 
                     "EntryName": "FIFE_T3_US_NERSC_Cori", 
-                    "FigureOfMerit": "1.3125"
+                    "PricePerformance": "1.3125"
                 },
                 { 
                     "EntryName": "FIFE_T3_US_NERSC_Cori_shared", 
-                    "FigureOfMerit": "0.591241"
+                    "PricePerformance": "0.591241"
                 },
                 { 
                     "EntryName": "FIFE_T3_US_NERSC_Cori_KNL", 
-                    "FigureOfMerit": "3.17647"
+                    "PricePerformance": "3.17647"
                 },
                 { 
                     "EntryName": "FIFE_T3_US_NERSC_Edison", 
-                    "FigureOfMerit": "0.656535"
+                    "PricePerformance": "0.656535"
                 },
                 { 
                     "EntryName": "FIFE_T3_US_NERSC_Edison_shared", 
-                    "FigureOfMerit": "0.658537"
+                    "PricePerformance": "0.658537"
                 },
                 { 
                     "EntryName": "DUNE_T3_US_NERSC_Cori", 
-                    "FigureOfMerit": "1.3125"
+                    "PricePerformance": "1.3125"
                 },
                 { 
                     "EntryName": "DUNE_T3_US_NERSC_Cori_shared", 
-                    "FigureOfMerit": "0.591241"
+                    "PricePerformance": "0.591241"
                 },
                 { 
                     "EntryName": "DUNE_T3_US_NERSC_Cori_KNL", 
-                    "FigureOfMerit": "4.94118"
+                    "PricePerformance": "4.94118"
                 },
                 { 
                     "EntryName": "DUNE_T3_US_NERSC_Cori_KNL_SL7", 
-                    "FigureOfMerit": "4.94118"
+                    "PricePerformance": "4.94118"
                 },
                 { 
                     "EntryName": "CMSHTPC_T3_US_NERSC_Cori_SL7_PREM", 
-                    "FigureOfMerit": "2.625"
+                    "PricePerformance": "2.625"
                 },
                 { 
                     "EntryName": "CMSHTPC_T3_US_NERSC_Cori_shared", 
-                    "FigureOfMerit": "0.591241"
+                    "PricePerformance": "0.591241"
                 },
                 { 
                     "EntryName": "CMSHTPC_T3_US_NERSC_Cori_KNL", 
-                    "FigureOfMerit": "3.17647"
+                    "PricePerformance": "3.17647"
                 }
             ]
         }
