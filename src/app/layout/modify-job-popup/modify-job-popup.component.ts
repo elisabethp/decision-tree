@@ -67,7 +67,9 @@ export class ModifyJobPopupComponent implements OnInit {
     this.action = this.isAddAction ? "add" : "modify";
 
     this.new_key = document.querySelectorAll('[data-edit-key]')[0];
-    this.new_value = document.querySelectorAll('[data-edit-value]')[0];    
+    this.new_value = document.querySelectorAll('[data-edit-value]')[0];   
+    
+    this.new_type = document.querySelectorAll('[data-edit-type]')[0];
     this.new_type = this.new_type.options[this.new_type.selectedIndex].value;
 
     this.new_key = this.isAddAction
@@ -110,7 +112,6 @@ export class ModifyJobPopupComponent implements OnInit {
     obj['action'] = this.action
     obj['key'] = this.new_key
     obj['value'] = this.new_value
-    obj['type'] = this.new_type
     obj['id'] = this.id
 
     var status:any = document.getElementById("submit-status")

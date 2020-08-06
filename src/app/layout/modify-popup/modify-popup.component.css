@@ -62,3 +62,8 @@ textarea {
     resize: none;
     height: 48px;
 }
+
+#submit-status {
+    font-style: italic;
+    font-size: 12px;
+}
