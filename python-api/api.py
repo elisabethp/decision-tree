@@ -29,6 +29,17 @@ class UpdateJob(Resource):
             if details["action"] == "remove":
                 del data[job_index][details['key']] 
             else:
+                '''
+                if details["type"] == "string":
+                    str(details['value'])
+                if details["type"] == "integer":
+                    int(details['value'])
+                if details["type"] == "string":
+                    float(details['value'])
+                if details["type"] == "boolean":
+                    bool(details['value'] == "true")
+                '''
+                
                 data[job_index][details['key']] = details['value']
 
             item = data

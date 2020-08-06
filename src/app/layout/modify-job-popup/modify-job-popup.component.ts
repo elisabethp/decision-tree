@@ -1,5 +1,7 @@
 import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { APIService } from 'src/app/api/api.service';
+import { throwError } from 'rxjs';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-modify-job-popup',
@@ -16,9 +18,11 @@ export class ModifyJobPopupComponent implements OnInit {
   data = null;
   value = null;
   classad = null;
+  type = null;
 
   new_key: any = null;
   new_value: any = null;
+  new_type: any = null;
   id: any = null;
 
   constructor(private api : APIService) { }
@@ -33,6 +37,9 @@ export class ModifyJobPopupComponent implements OnInit {
     this.id = this.data['job-row']['id']
     this.classad = this.data['job-row']['key']
     this.value = this.data['job-row']['value'];
+    this.type = typeof(this.value)
+
+    console.log(this.type)
 
     if (this.isAddAction) {
       this.value = ""
@@ -50,7 +57,7 @@ export class ModifyJobPopupComponent implements OnInit {
         } 
       }
     );
-  
+
     document.dispatchEvent(event);
   }
 
@@ -60,7 +67,9 @@ export class ModifyJobPopupComponent implements OnInit {
     this.new_key = document.querySelectorAll('[data-edit-key]')[0];
     this.new_value = document.querySelectorAll('[data-edit-value]')[0];
     
-    //this.new_key = this.new_key.value;
+    this.new_type = document.querySelectorAll('[data-edit-type]')[0];
+    this.new_type = this.new_type.options[this.new_type.selectedIndex].value;
+
     this.new_key = this.isAddAction
       ? this.new_key.value
       : this.new_key.innerText;
@@ -78,7 +87,7 @@ export class ModifyJobPopupComponent implements OnInit {
   }
 
   validate() {
-    if (this.new_key.length != 0 && this.new_value.length != 0) {
+    if (this.new_key.length != 0 && this.new_value.length != 0 && this.isTypedCorrectly()) {
       var visibleContent = document.getElementById('modify-content');
       var invisibleContent = document.getElementById('modify-content-validate');
   
@@ -101,6 +110,7 @@ export class ModifyJobPopupComponent implements OnInit {
     obj['action'] = this.action
     obj['key'] = this.new_key
     obj['value'] = this.new_value
+    obj['type'] = this.new_type.toLowerCase()
     obj['id'] = this.id
 
     var status:any = document.getElementById("submit-status")
@@ -128,4 +138,49 @@ export class ModifyJobPopupComponent implements OnInit {
     event.target.classList.remove('error-input');
   }
 
+  isTypedCorrectly() : boolean {
+    try {
+      switch(this.new_type.toLowerCase()) {
+        case "string": { //string
+          this.new_value = String(this.new_value)
+          break;
+        }
+        case "integer": { //integer
+          this.new_value = parseInt(this.new_value)
+          
+          if (isNaN(this.new_value)) {
+            throw Error;
+          }
+
+          break;
+        }
+        case "float": { //float
+          this.new_value = parseFloat(this.new_value)
+          
+          if (isNaN(this.new_value)) {
+            throw Error;
+          }
+          
+          break;
+        }
+        case "boolean": { //boolean
+          if (this.new_value.toLowerCase() == "true" ||
+                this.new_value.toLowerCase() == "false")  {
+              this.new_value = this.new_value.toLowerCase() == "true"
+              break;
+          }
+          throw Error;
+        }
+        default: {
+          throw Error;
+        }
+      }
+
+      return true;
+    }
+    catch {
+      document.querySelectorAll('[data-edit-type]')[0].classList.add('error-input');
+      return false
+    }
+  }
 }

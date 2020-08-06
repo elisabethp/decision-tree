@@ -35,6 +35,18 @@
                         type="text"></textarea>
                 </div>
 
+                <div class="modal-section">
+                    <div class="modal-field-title">Value Type</div>
+                    <select
+                        (change)="clearErrorField($event)" 
+                        data-edit-type="true">
+                        <option value="String">String</option>
+                        <option value="Integer">Integer</option>
+                        <option value="Float">Float</option>
+                        <option value="Boolean">Boolean</option>
+                    </select>
+                </div>
+
                 <div class="modal-footer modal-section">
                     <button class="modal-button" (click)="submitChanges()">Submit</button>
                     <button id="remove-button" class="modal-button" (click)="remove()">Remove</button>
@@ -53,6 +65,13 @@
                     <div class="modal-field-title">Value</div>
                     <div class="modal-value-section">
                         <span>{{ new_value }}</span>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-field-title">Value Type</div>
+                    <div class="modal-value-section">
+                        <span>{{ new_type }}</span>
                     </div>
                 </div>
 
