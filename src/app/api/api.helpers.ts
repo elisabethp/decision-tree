@@ -4,6 +4,12 @@ export function getXHR(url, request_type, resolve, reject) {
     xhr.open(request_type, url, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.timeout = 60000; // Set timeout to 1 minute (60000 milliseconds) 
+    xhr.onerror = function() {
+      reject({
+        "serverError": true,
+        "notFound": false
+      })
+    }
     xhr.ontimeout = function () { 
       reject({
         "serverError": true,
