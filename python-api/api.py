@@ -2,8 +2,6 @@ from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from flask_cors import CORS, cross_origin
 from json import dumps
-import pandas as pd
-import numpy as np
 import json
 
 app = Flask(__name__)
@@ -11,13 +9,22 @@ api = Api(app)
 
 cors = CORS(app)
 
+''' 
+*** -- 
+            **************************************************************************************
+
+            THESE ARE /~NAIVE~/ IMPLEMENTATIONS: DO NOT USE FOR PRODUCTION USE ..... thank you :)
+            
+            **************************************************************************************
+-- *** 
+'''
+
 class UpdateJob(Resource):
     def post(self):
         json_data = request.get_json(force=True)
         details = json_data['details']
         item = None
 
-        print(details)
         with open('./assets/job-data.json') as json_file:
             data = json.load(json_file)
             
@@ -74,13 +81,27 @@ class UpdateChannel(Resource):
 
 class GetResource(Resource):
     def get(self, file):
-        #print(file)
 
         data = None
         with open('./assets/' + file +'.json') as json_file:
             data = json.load(json_file)
 
-        #print(data)
+        return jsonify(data)
+
+class GetJobData(Resource):
+    def post(self):
+        json_data = request.get_json(force=True)
+        id = json_data["jobsubjobid"]
+        data = None
+        
+        with open('./assets/job-data.json') as json_file:
+            data = json.load(json_file)
+
+            for i in range(len(data)):
+                if data[i]["jobsubjobid"] == id:
+                    data = data[i]
+
+        print(data)
         return jsonify(data)
 
 class GetJobs(Resource):
@@ -88,12 +109,9 @@ class GetJobs(Resource):
         json_data = request.get_json(force=True)
         filters = json_data['filters']
 
-        #df = None
         data = None 
         metadata = None
         
-        print(filters)
-
         with open('./assets/job-data.json') as mfile:
             metadata = json.load(mfile)
 
@@ -132,11 +150,11 @@ class GetJobs(Resource):
 
 
 
-api.add_resource(UpdateJob, '/update-job') # Route_1
-api.add_resource(UpdateChannel, '/update-channel') # Route_1
-api.add_resource(GetResource, '/get-resource/<file>') # Route_1
-api.add_resource(GetJobs, '/jobs/') # Route_1
-#api.add_resource(AddJobClassad, '/add-job-classad') # Route_1
+api.add_resource(UpdateJob, '/update-job') 
+api.add_resource(UpdateChannel, '/update-channel') 
+api.add_resource(GetResource, '/get-resource/<file>')
+api.add_resource(GetJobData, '/get-resource/job-data')
+api.add_resource(GetJobs, '/jobs/')
 
 if __name__ == '__main__':
      app.run(host="131.225.154.146", port='5002', ssl_context=('/etc/cloud-security/fermicloud013.fnal.gov-hostcert.pem','/etc/cloud-security/fermicloud013.fnal.gov-hostkey.pem'))

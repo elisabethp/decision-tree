@@ -20,7 +20,7 @@ The application lives within the path `/var/www/decision-tree`. To build this pr
 ### Local
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. 
 
-## Development API
+## Sample API
 The sample Python API is located within the respository's `python-api` folder. 
 * It requires at least Python 3.6 to run. 
 * The API running on Fermicloud requires a valid cert and key to perform API requests.

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { getHost, fileSwitcher, getXHR } from 'src/app/api/api.helpers';
 
 @Injectable({
   providedIn: 'root'
@@ -6,25 +7,26 @@ import { Injectable } from '@angular/core';
 
 export class APIService {
 
-  host = '131.225.154.146'
+  constructor() {}
 
-  constructor() {
-    this.host = '131.225.154.146'
-  }
-
-  public async getJobDetails(jobID) {
+  public getJobDetails(jobID) {
     return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest();
+      var url = 'https://' + getHost() + '/get-resource/job-data'
+      var request_type = "POST"
+      var xhr = getXHR(url, request_type, resolve, reject);
+
 
       xhr.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
               var response = JSON.parse(this.responseText)
             
-              for (var i = 0; i < response.length; i++) {
+              /*for (var i = 0; i < response.length; i++) {
                 if (response[i]["jobsubjobid"] ==  '"' + jobID + '"') {
                   resolve(response[i]);
                 } 
-              }
+              }*/
+              
+              resolve(response)
 
               reject({
                 "serverError": false,
@@ -40,23 +42,17 @@ export class APIService {
           }
       };
 
-      xhr.open("GET", 'https://131.225.154.146:5002/get-resource/job-data', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.timeout = 60000; // Set timeout to 4 seconds (4000 milliseconds) 
-      xhr.ontimeout = function () { 
-        reject({
-          "serverError": true,
-          "notFound": false
-        })
-      }
-      xhr.send();
+      xhr.send(JSON.stringify({
+        "jobsubjobid": jobID
+      }));
     })  
   }
 
-  public async getAllJobs(jobs, filters, start) {
-
+  public getAllJobs(jobs, filters, start) {
     return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest();
+      var url = 'https://' + getHost() + '/jobs/'
+      var request_type = "POST"
+      var xhr = getXHR(url, request_type, resolve, reject);
 
       xhr.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
@@ -66,7 +62,6 @@ export class APIService {
                 resolve(response);  
               }
               else {
-                //console.log("returning all jobs")
                 resolve(response);
               }
               
@@ -81,15 +76,6 @@ export class APIService {
 
       };
 
-      xhr.open("POST", 'https://131.225.154.146:5002/jobs/', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
-      xhr.ontimeout = function () { 
-        reject({
-          "serverError": true,
-          "notFound": false
-        })
-      }
       xhr.send(JSON.stringify({
         "start": start,
         "count": 20,
@@ -98,9 +84,11 @@ export class APIService {
     })  
   }
 
-  public async getChannelNames() {
+  public getChannelNames() {
     return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest();
+      var url = 'https://' + getHost() + '/get-resource/channel-list'
+      var request_type = "GET"
+      var xhr = getXHR(url, request_type, resolve, reject);
 
       xhr.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
@@ -116,45 +104,15 @@ export class APIService {
           }
       };
 
-      xhr.open("GET", 'https://131.225.154.146:5002/get-resource/channel-list', true);
-
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
-      xhr.ontimeout = function () { 
-        reject({
-          "serverError": true,
-          "notFound": false
-        })
-      }
       xhr.send();
     })  
   }
 
-  public async getChannelData(channel) {
+  public getChannelData(channel) {
     return new Promise(function(resolve, reject) {
-
-      var file = '';
-
-      switch (channel.toLowerCase()) {
-        case 'gce': {
-          file = 'gce-transforms';
-          break;
-        }
-        case 'nersc': {
-          file = 'nersc-transforms';
-          break;
-        }
-        case 'aws_calculations_with_source_proxy': {
-          file = 'aws-calc-transforms';
-          break;
-        }
-        case 'resource_request': {
-          //return [];
-          break;
-        }
-      }
-
-      var xhr = new XMLHttpRequest();
+      var url = 'https://' + getHost() + '/get-resource/' + fileSwitcher(channel)
+      var request_type = "GET"
+      var xhr = getXHR(url, request_type, resolve, reject);
 
       xhr.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
@@ -169,23 +127,15 @@ export class APIService {
           }
       };
 
-      xhr.open("GET", 'https://131.225.154.146:5002/get-resource/' + file, true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
-      xhr.ontimeout = function () { 
-        reject({
-          "serverError": true,
-          "notFound": false
-        })
-      }
       xhr.send();
     })  
   }
 
-  public async postNewJobData(details) {
+  public postNewJobData(details) {
     return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest();
-      var url = 'https://131.225.154.146:5002/update-job'
+      var url = 'https://' + getHost() + '/update-job'
+      var request_type = "POST"
+      var xhr = getXHR(url, request_type, resolve, reject);
 
       xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -200,47 +150,17 @@ export class APIService {
             }
         };
 
-      xhr.open("POST", url, true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
-      xhr.ontimeout = function () { 
-        reject({
-          "serverError": true,
-          "notFound": false
-        })
-      }
       xhr.send(JSON.stringify({
           "details": details
       }));
     })  
   }
 
-  public async postNewChannelData(channel, details) {
+  public postNewChannelData(channel, details) {
     return new Promise(function(resolve, reject) {
-
-      var file = '';
-
-      switch (channel.toLowerCase()) {
-        case 'gce': {
-          file = 'gce-transforms';
-          break;
-        }
-        case 'nersc': {
-          file = 'nersc-transforms';
-          break;
-        }
-        case 'aws_calculations_with_source_proxy': {
-          file = 'aws-calc-transforms';
-          break;
-        }
-        case 'resource_request': {
-          //return [];
-          break;
-        }
-      }
-
-      var xhr = new XMLHttpRequest();
-      var url = 'https://131.225.154.146:5002/update-channel'
+      var url = 'https://' + getHost() + '/update-channel'
+      var request_type = "POST"
+      var xhr = getXHR(url, request_type, resolve, reject);
 
       xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -255,26 +175,18 @@ export class APIService {
             }
         };
 
-      xhr.open("POST", url, true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
-      xhr.ontimeout = function () { 
-        reject({
-          "serverError": true,
-          "notFound": false
-        })
-      }
-      
       xhr.send(JSON.stringify({
-          "file": file,
+          "file": fileSwitcher(channel),
           "details": details
       }));
     })  
   }
 
-  public async getUserInfo() {
+  public getUserInfo() {
     return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest();
+      var url = 'https://fermicloud013.fnal.gov/Shibboleth.sso/Session'
+      var request_type = "GET"
+      var xhr = getXHR(url, request_type, resolve, reject);
 
       xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -289,42 +201,9 @@ export class APIService {
             }
         };
 
-      xhr.open("GET", 'https://fermicloud013.fnal.gov/Shibboleth.sso/Session', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.timeout = 10000; // Set timeout to 4 seconds (4000 milliseconds) 
-      xhr.ontimeout = function () { 
-        reject({
-          "serverError": true,
-          "notFound": false
-        })
-      }
       xhr.send();
 
     })
   }
 
-  public getFileName(channel) {
-    var file = '';
-
-      switch (channel.toLowerCase()) {
-        case 'gce': {
-          file = 'gce-transforms';
-          break;
-        }
-        case 'nersc': {
-          file = 'nersc-transforms';
-          break;
-        }
-        case 'aws_calculations_with_source_proxy': {
-          file = 'aws-calc-transforms';
-          break;
-        }
-        case 'resource_request': {
-          //return [];
-          break;
-        }
-      }
-    
-    return file;
-  }
 }
