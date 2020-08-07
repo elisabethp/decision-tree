@@ -1,0 +1,26 @@
+<div *ngIf="isLoaded" id='left-content'>
+    <div class="content-header">
+        <span class="section-header">Add Classad</span>
+        <i (click)="addRow()" class="fa fa-plus-circle"></i>
+    </div>
+    <hr>
+    <br>
+    <span class="section-header">Decision Data</span>
+    <hr> 
+    <p>No Decision Available</p>
+</div>
+<div *ngIf="isLoaded" id='right-content'>
+    <div class="content-header">
+        <span class="section-header">Job Data</span>
+    </div>
+    <hr> 
+    <app-job-data-table [job]="job_data"></app-job-data-table>
+</div>
+
+<app-page-state 
+    *ngIf="!isLoaded" 
+    [isLoaded]="isLoaded" 
+    [notFound]="notFound" 
+    [serverError]="serverError">
+</app-page-state>
+

@@ -1,0 +1,29 @@
+<div id="filter-modal" class="modal">
+    <div class="modal-wrapper">
+        <div class="modal-header">
+            <span class="modal-title">Add ClassAd Filter</span>
+            <span (click)="close()" class="close">&times;</span>
+        </div>
+
+        <div class="modal-content">
+            <div class="modal-section">
+                <div class="modal-field-title">Key</div>
+                <input id="key-input" list="frequent-keys" placeholder="Key" type="text" (keyup)='clearErrorField($event)'>
+                <datalist id="frequent-keys">
+                    <option *ngFor="let key of frequent_keys" [value]="key">
+                </datalist>
+            </div>
+            <div class="modal-section">
+                <div class="modal-field-title">Value</div>
+                <input id="value-input" placeholder="Value" type="text" (keyup)='clearErrorField($event)'>
+            </div>
+    
+            <div class="modal-footer modal-section">
+                <button (click)='onConfirm()' class="modal-button">Add Filter</button>
+            </div>
+
+        </div>
+        
+    </div>
+  
+</div>

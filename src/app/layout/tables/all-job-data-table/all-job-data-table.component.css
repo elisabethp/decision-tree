@@ -1,0 +1,14 @@
+thead {
+  background-color: #E8E8E8;
+}
+
+tbody {
+  max-height: 700px !important;
+  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+tr td:first-child, tr th:first-child {
+  width: 15%;
+}

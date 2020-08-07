@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, CanActivate } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-import { GlobalPageComponent } from './global-page/global-page.component';
-import { JobPageComponent } from './job-page/job-page.component';
-import { AllJobPageComponent } from './all-job-page/all-job-page.component';
-import { JobDataPageComponent } from './job-data-page/job-data-page.component';
+import { GlobalPageComponent } from './pages/global-page/global-page.component';
+import { JobPageComponent } from './pages/job-page/job-page.component';
+import { AllJobPageComponent } from './pages/all-job-page/all-job-page.component';
+import { JobDataPageComponent } from './pages/job-data-page/job-data-page.component';
 
 const routes: Routes = [
   {

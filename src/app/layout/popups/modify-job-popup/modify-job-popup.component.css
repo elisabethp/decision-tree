@@ -1,0 +1,15 @@
+textarea {
+    resize: none;
+    height: 150px;
+}
+
+span {
+    word-wrap:break-word;
+}
+
+.modal-value-section {
+    display: block;
+    overflow-y: scroll;
+    max-height: 200px;
+}
+

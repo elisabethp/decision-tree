@@ -1,0 +1,17 @@
+thead {
+  background-color: #E8E8E8;
+}
+
+tbody {
+  max-height: 700px !important;
+}
+
+tr td:first-child, tr th:first-child {
+  width: 15%;
+}
+
+td:last-child {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

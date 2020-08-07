@@ -1,9 +1,11 @@
 import { Component, ComponentFactoryResolver, Type, ViewChild, ViewContainerRef, HostListener } from '@angular/core';
 import { Router } from "@angular/router";
-import { ModifyPopupComponent } from './layout/modify-popup/modify-popup.component';
-import { ModifyJobPopupComponent } from './layout/modify-job-popup/modify-job-popup.component';
-import { FilterPopupComponent } from './layout/filter-popup/filter-popup.component';
-import { APIService } from './api/api.service';
+
+import { ModifyGlobalPopupComponent } from 'src/app/layout/popups/modify-global-popup/modify-global-popup.component';
+import { ModifyJobPopupComponent } from 'src/app/layout/popups/modify-job-popup/modify-job-popup.component';
+import { FilterPopupComponent } from 'src/app/layout/popups/filter-popup/filter-popup.component';
+
+import { APIService } from 'src/app/api/api.service';
 import { UserService } from 'src/app/auth/user.service'
 
 @Component({
@@ -15,39 +17,9 @@ import { UserService } from 'src/app/auth/user.service'
 export class AppComponent {
 
   @ViewChild('modal', {read: ViewContainerRef}) container: ViewContainerRef;
-  
-  @HostListener('document:global-click', ['$event'])
-  onGlobalClick(ev: any) {
-          console.log(ev.detail);
-
-    switch(ev.detail['switch-key']) {
-      case 'channel-edit-row': {
-        //console.log("channel-edit-row");
-        this.addComponent(this.modifyModalClass, ev.detail);
-        break;
-      }
-      case 'job-edit-row': {
-        this.addComponent(this.modifyJobModalClass, ev.detail);
-        break;
-      }
-      case 'add-job-filter': {
-        this.addComponent(this.filterModalClass, ev.detail);
-        break;
-      }
-      case 'go-to-job': {
-        this.navigate(ev.detail["url"])
-        break;
-      }
-      case 'close-modal': {
-        //console.log("close-modal");
-        this.container.clear();
-        break;
-      }
-    }
-  }
 
   modifyJobModalClass = ModifyJobPopupComponent
-  modifyModalClass = ModifyPopupComponent;
+  modifyGlobalModalClass = ModifyGlobalPopupComponent;
   filterModalClass = FilterPopupComponent;
   
   userService:UserService;
@@ -68,7 +40,6 @@ export class AppComponent {
         .catch((error) =>{
           this.applicationError = true
           console.log(error)
-          //console.log("there is an error in the application log in making a user")
         })
   }
 
@@ -83,4 +54,30 @@ export class AppComponent {
     component.instance.data = modal_data
   }
 
+  /* EVENT LISTENER */
+  @HostListener('document:global-click', ['$event'])
+  onGlobalClick(ev: any) {
+    switch(ev.detail['switch-key']) {
+      case 'channel-edit-row': {
+        this.addComponent(this.modifyGlobalModalClass, ev.detail);
+        break;
+      }
+      case 'job-edit-row': {
+        this.addComponent(this.modifyJobModalClass, ev.detail);
+        break;
+      }
+      case 'add-job-filter': {
+        this.addComponent(this.filterModalClass, ev.detail);
+        break;
+      }
+      case 'go-to-job': {
+        this.navigate(ev.detail["url"])
+        break;
+      }
+      case 'close-modal': {
+        this.container.clear();
+        break;
+      }
+    }
+  }
 }

@@ -16,32 +16,16 @@ export class PageTabComponent implements OnInit {
   search_input = null;
 
   @Output() tabTrigger = new EventEmitter<string>();
-  @HostListener('document:global-click', ['$event'])
-  onGlobalClick(ev: any) {
-    switch(ev.detail['switch-key']) {
-      case 'go-to-job': {
-        var oldSelectedTab = document.getElementsByClassName('selected-page-tab')[0];
-        oldSelectedTab.classList.remove('selected-page-tab');
-
-        var tab = document.querySelectorAll('[data-tab-index="1"]')[0];
-        tab.classList.add('selected-page-tab')
-
-        this.selected_tab = this.tab_names[1];
-        this.isSearchEnabled();
-
-        break;
-      }
-    }
-  }
+  
   constructor() { 
     this.tab_names = ["Global System Status", "Job Parameters", "All Jobs"];
     this.router_names = ['/global-settings', '/job-settings', '/all-jobs'];
 
-    //console.log(window.location.pathname.includes(this.router_names[1]));
     this.selected_tab_index = this.matchRoute();
-
     this.selected_tab = this.tab_names[this.selected_tab_index];
   }
+
+  ngOnInit(): void {}
 
   switchTabs(event) {
     var target = event.target;
@@ -96,9 +80,6 @@ export class PageTabComponent implements OnInit {
 
     return index;
   }
-  
-  ngOnInit(): void {
-  }
 
   ngAfterContentInit(): void {
     this.search_bar = document.getElementById('search-wrapper');    
@@ -107,4 +88,22 @@ export class PageTabComponent implements OnInit {
     this.search_input = document.getElementById("search-input");
   }
 
+  /* EVENT LISTENER */
+  @HostListener('document:global-click', ['$event'])
+  onGlobalClick(ev: any) {
+    switch(ev.detail['switch-key']) {
+      case 'go-to-job': {
+        var oldSelectedTab = document.getElementsByClassName('selected-page-tab')[0];
+        oldSelectedTab.classList.remove('selected-page-tab');
+
+        var tab = document.querySelectorAll('[data-tab-index="1"]')[0];
+        tab.classList.add('selected-page-tab')
+
+        this.selected_tab = this.tab_names[1];
+        this.isSearchEnabled();
+
+        break;
+      }
+    }
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ComponentFactoryResolver, Type, ViewChild, ViewContainerRef, ChangeDetectorRef, OnChanges, SimpleChanges } from '@angular/core';
-import { TableComponent } from '../table/table.component';
-import { APIService } from '../../api/api.service';
+import { GlobalTableComponent } from 'src/app/layout/tables/global-table/global-table.component';
+import { APIService } from 'src/app/api/api.service';
+import { LoadingComponent } from 'src/app/shared/loading.component'
 
 @Component({
   selector: 'app-channel-data',
@@ -8,17 +9,17 @@ import { APIService } from '../../api/api.service';
   styleUrls: ['./channel-data.component.css']
 })
 
-export class ChannelDataComponent implements OnInit, OnChanges {
+export class ChannelDataComponent extends LoadingComponent implements OnInit, OnChanges {
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
   @Input() channel: any = 'default';
 
   channel_data = null;
-
-  isLoaded = false;
-  notFound = false; //doesn't apply here
-  serverError = false;
-
-  constructor(private api : APIService, private componentFactoryResolver: ComponentFactoryResolver, private changeDetector : ChangeDetectorRef) { }
+  
+  constructor(private api : APIService, 
+              private componentFactoryResolver: ComponentFactoryResolver, 
+              private changeDetector : ChangeDetectorRef) { 
+    super()
+  }
 
   ngOnInit(): void {}
 
@@ -42,7 +43,7 @@ export class ChannelDataComponent implements OnInit, OnChanges {
         this.channel_data = data;
         
         for (var i = 0; i < this.channel_data["count"]; i++) {
-          this.addComponent(TableComponent, i);
+          this.addComponent(GlobalTableComponent, i);
         }
       })
       .catch((error) => {

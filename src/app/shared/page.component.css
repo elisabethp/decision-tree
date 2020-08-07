@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+    width: 100%;
+}
+
+.section-header {
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-header i:hover {
+    cursor: pointer;
+}

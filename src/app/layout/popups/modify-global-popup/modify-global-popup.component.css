@@ -1,0 +1,58 @@
+.show-value-transition {
+    flex-direction: row;
+}
+
+.transition-wrapper {
+    margin: 0px 15px;
+}
+
+.transition-wrapper:first-child {
+    margin-left: 0;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+tbody, table {
+    background-color: none !important;
+}
+
+thead, tbody tr {
+    display: table;
+    table-layout: fixed; /* even columns width , fix width of table too*/
+}
+
+th {
+    text-align: left;
+}
+
+td, th {
+    word-wrap: break-word;
+    padding: 10px 0;
+}
+
+input {
+    width: calc(100% - 8px);
+    padding: 2px
+}
+
+tbody {
+    display: block;
+    overflow-y: scroll;
+    max-height: 350px;
+}
+
+table, thead, tbody, .table, tbody tr {
+    width: 100%;
+}
+
+.modal select {
+    width: 60%;
+}
+
+textarea {
+    resize: none;
+    height: 48px;
+}

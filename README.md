@@ -1,27 +1,31 @@
-# DecisionTreeApp
+# Decision Tree Overview
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+The objective of this project is to build a web application that allows DUNE users to:
+* Read and Write the global state of the HEPCloud Decision Engine.
+* Read and write job-specific parameters.
+* Read Decision Engine data regarding cluster backend matching.
 
-## Development server
+In order to:
+* Create system transparency by opening the Decision Engine’s black-box.
+* Provide users with more control over their job submissions. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Documentation
+The [documentation](https://indico.fnal.gov/event/44309/contributions/190724/attachments/132042/162960/Petit_-_Bois_Elisabeth_Paper2.pdf) for this application is hosted on Fermilab's Indico instance.
 
-## Code scaffolding
+## Development
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Fermicloud
+The application lives within the path `/var/www/decision-tree`. To build this project for production, run `ng build --prod` within this folder. After a successful build, the site will run at https://fermicloud013.fnal.gov. This site is accessible only through the Fermilab VPN.
 
-## Build
+### Local
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Development API
+The sample Python API is located within the respository's `python-api` folder. 
+* It requires at least Python 3.6 to run. 
+* The API running on Fermicloud requires a valid cert and key to perform API requests.
 
-## Running unit tests
+You can use provided Fermilab security certificates located at the path `/etc/cloud-security`. If it seems the API is unresponsive after running for a period of time, it will need to be restarted (reason unknown -- possibly due to certificate expiration?).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Support
+For any questions, feel free to contact me at ebois3 [at] gatech.edu or hello [at] lissythe.dev.
