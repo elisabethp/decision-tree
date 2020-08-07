@@ -25,8 +25,9 @@ export class APIService {
                   resolve(response[i]);
                 } 
               }*/
-              
-              resolve(response)
+              if (response["found"]) {
+                resolve(response["data"])
+              } 
 
               reject({
                 "serverError": false,

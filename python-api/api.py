@@ -92,17 +92,21 @@ class GetJobData(Resource):
     def post(self):
         json_data = request.get_json(force=True)
         id = json_data["jobsubjobid"]
-        data = None
         
+        data = None
+        found = False
+
         with open('./assets/job-data.json') as json_file:
             data = json.load(json_file)
 
             for i in range(len(data)):
                 if data[i]["jobsubjobid"] == id:
                     data = data[i]
+                    found = True
+                    break
 
         print(data)
-        return jsonify(data)
+        return jsonify({"found": found, "data": data})
 
 class GetJobs(Resource):
     def post(self):
