@@ -30,7 +30,7 @@ export class APIService {
               })
           }
           
-          if (this.readyState == 4 && this.status == 500) {
+          if (this.readyState == 4 && this.status >= 500) {
             reject({
                 "serverError": true,
                 "notFound": false
@@ -63,7 +63,7 @@ export class APIService {
               
           }
 
-          if (this.readyState == 4 && this.status == 500) {
+          if (this.readyState == 4 && this.status >= 500) {
             reject({
                 "serverError": true,
                 "notFound": false
@@ -92,7 +92,7 @@ export class APIService {
               resolve(JSON.parse(this.responseText))          
           }
 
-          if (this.readyState == 4 && this.status == 500) {
+          if (this.readyState == 4 && this.status >= 500) {
             reject({
                 "serverError": true,
                 "notFound": false
@@ -115,7 +115,7 @@ export class APIService {
               resolve(JSON.parse(this.responseText))
           }
           
-          if (this.readyState == 4 && this.status == 500) {
+          if (this.readyState == 4 && this.status >= 500) {
             reject({
                 "serverError": true,
                 "notFound": false
@@ -138,7 +138,7 @@ export class APIService {
                 resolve(true)
             }
             
-            if (this.readyState == 4 && this.status == 500) {
+            if (this.readyState == 4 && this.status >= 500) {
               reject({
                   "serverError": true,
                   "notFound": false
