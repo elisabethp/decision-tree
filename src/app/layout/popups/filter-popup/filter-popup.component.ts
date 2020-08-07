@@ -12,6 +12,10 @@ export class FilterPopupComponent extends Modal implements OnInit {
   filters = [];
   frequent_keys = ["jobsubjobid", "owner", "sccountinggroup", "args"]
 
+  keyInput : any;
+  valueInput : any
+  type: any
+
   constructor() { super() }
 
   ngOnInit(): void {
@@ -19,17 +23,16 @@ export class FilterPopupComponent extends Modal implements OnInit {
   }
 
   onConfirm() {
-    var keyInput : any;
-    var valueInput : any
+    this.keyInput = document.getElementById('key-input');
+    this.valueInput = document.getElementById('value-input');
+    
+    this.type = document.querySelectorAll('[data-edit-type]')[0];
+    this.type = this.type.options[this.type.selectedIndex].value;
 
-
-    keyInput = document.getElementById('key-input');
-    valueInput = document.getElementById('value-input');
-
-    if (keyInput.value.length != 0 && valueInput.value.length != 0) {
+    if (this.keyInput.value.length != 0 && this.valueInput.value.length != 0 && this.validate()) {
       this.filters.push({
-        "key": keyInput.value, 
-        "value": valueInput.value 
+        "key": this.keyInput.value, 
+        "value": this.valueInput 
       })
 
       var event = new CustomEvent(
@@ -45,13 +48,22 @@ export class FilterPopupComponent extends Modal implements OnInit {
       this.close();
     }
     else {
-      if (keyInput.value.length == 0) {
-        keyInput.classList.add('error-input');
+      if (this.keyInput.value.length == 0) {
+        this.keyInput.classList.add('error-input');
       }
-      if (valueInput.value.length == 0) {
-        valueInput.classList.add('error-input');
+      if (this.valueInput.value.length == 0) {
+        this.valueInput.classList.add('error-input');
       }
     }
+  }
+
+  validate() {
+    if (this.isTypedCorrectly(this.valueInput.value, this.type.toLowerCase())) {
+      this.valueInput = this.getTypedValue(this.valueInput.value, this.type.toLowerCase())
+      return true
+    }
+
+    return false
   }
 
 }

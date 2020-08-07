@@ -57,7 +57,7 @@ export class ModifyJobPopupComponent extends Modal implements OnInit {
     this.new_value = document.querySelectorAll('[data-edit-value]')[0];   
     
     this.new_type = document.querySelectorAll('[data-edit-type]')[0];
-    this.new_type = this.new_type.options[this.new_type.selectedIndex].value;
+    this.new_type = this.new_type.options[this.new_type.selectedIndex];
 
     this.new_key = this.isAddAction
       ? this.new_key.value
@@ -76,7 +76,8 @@ export class ModifyJobPopupComponent extends Modal implements OnInit {
   }
 
   validate() {
-    if (this.new_key.length != 0 && this.new_value.length != 0 && this.isTypedCorrectly(this.new_value, this.new_type.toLowerCase())) {
+    if (this.new_key.length != 0 && this.new_value.length != 0 
+          && this.isTypedCorrectly(this.new_value, this.retrieveTypeValue().toLowerCase())) {
       var visibleContent = document.getElementById('modify-content');
       var invisibleContent = document.getElementById('modify-content-validate');
   
@@ -93,12 +94,16 @@ export class ModifyJobPopupComponent extends Modal implements OnInit {
     }  
   }
 
+  retrieveTypeValue() {
+    return this.new_type.value;
+  }
+
   sendNewRows() {
     var obj = {};
 
     obj['action'] = this.action
     obj['key'] = this.new_key
-    obj['value'] = this.new_value
+    obj['value'] = this.getTypedValue(this.new_value, this.retrieveTypeValue().toLowerCase())
     obj['id'] = this.id
 
     var status:any = document.getElementById("submit-status")

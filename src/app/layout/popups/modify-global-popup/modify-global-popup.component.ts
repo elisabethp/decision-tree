@@ -34,7 +34,7 @@ export class ModifyGlobalPopupComponent extends Modal implements OnInit {
     value_inputs = document.querySelectorAll('[data-edit-row]');
 
     for (var i = 0; i < value_inputs.length; i++) {
-      this.values.push(this.isTypedCorrectly(value_inputs[i].value, type_inputs[i].value))
+      this.values.push(this.getTypedValue(value_inputs[i].value, type_inputs[i].value))
       this.types.push(type_inputs[i].value)
       
       if (value_inputs[i].value.length == 0) {

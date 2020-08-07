@@ -13,9 +13,27 @@
                     <option *ngFor="let key of frequent_keys" [value]="key">
                 </datalist>
             </div>
+            
             <div class="modal-section">
                 <div class="modal-field-title">Value</div>
                 <input id="value-input" placeholder="Value" type="text" (keyup)='clearErrorField($event)'>
+            </div>
+
+            <div class="modal-section">
+                <div class="modal-field-title">Value Type</div>
+                <select
+                    (change)="clearErrorField($event)" 
+                    data-edit-type="true">
+                    <option id="" value="">Select...</option>
+                    <option 
+                        value="string">String</option>
+                    <option 
+                        value="integer">Integer</option>
+                    <option 
+                        value="float">Float</option>
+                    <option 
+                        value="boolean">Boolean</option>
+                </select>
             </div>
     
             <div class="modal-footer modal-section">

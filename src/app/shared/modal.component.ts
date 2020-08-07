@@ -30,6 +30,26 @@ export class Modal {
         return result;
     }
 
+    getTypedValue(value, type) { //no validation because isTypedCorrectly is run first
+        switch(type) {
+            case "string": { //string
+                return String(value)
+            }
+            case "integer": { //integer
+                return parseInt(value)
+            }
+            case "float": { //float
+                return parseFloat(value)
+            }
+            case "boolean": { //boolean
+                if (value.toLowerCase() == "true" ||
+                        value.toLowerCase() == "false")  {
+                    return value.toLowerCase() == "true"
+                }
+            }
+        }
+    }
+
     isTypedCorrectly(value, type) : boolean {
         try {
           switch(type) {
@@ -42,6 +62,7 @@ export class Modal {
               
               if (isNaN(value)) {
                 throw Error;
+                return false;
               }
     
               break;
@@ -51,6 +72,7 @@ export class Modal {
               
               if (isNaN(value)) {
                 throw Error;
+                return false;
               }
               
               break;
@@ -62,13 +84,15 @@ export class Modal {
                   break;
               }
               throw Error;
+              return false;
             }
             default: {
               throw Error;
+              return false;
             }
           }
     
-          return value;
+          return true;
         }
         catch {
           document.querySelectorAll('[data-edit-type]')[0].classList.add('error-input');
