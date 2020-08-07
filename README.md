@@ -10,7 +10,7 @@ In order to:
 * Provide users with more control over their job submissions. 
 
 ## Documentation
-The [documentation](https://indico.fnal.gov/event/44309/contributions/190724/attachments/132042/162960/Petit_-_Bois_Elisabeth_Paper2.pdf) for this application is hosted on Fermilab's Indico instance.
+The [documentation](https://indico.fnal.gov/event/44309/contributions/190724/attachments/132042/162960/Petit_-_Bois_Elisabeth_Paper2.pdf) for this application is hosted on Fermilab's Indico service.
 
 ## Development
 
