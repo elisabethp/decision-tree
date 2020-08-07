@@ -105,7 +105,6 @@ class GetJobData(Resource):
                     found = True
                     break
 
-        print(data)
         return jsonify({"found": found, "data": data})
 
 class GetJobs(Resource):

@@ -20,11 +20,6 @@ export class APIService {
           if (this.readyState == 4 && this.status == 200) {
               var response = JSON.parse(this.responseText)
             
-              /*for (var i = 0; i < response.length; i++) {
-                if (response[i]["jobsubjobid"] ==  '"' + jobID + '"') {
-                  resolve(response[i]);
-                } 
-              }*/
               if (response["found"]) {
                 resolve(response["data"])
               } 
@@ -44,7 +39,7 @@ export class APIService {
       };
 
       xhr.send(JSON.stringify({
-        "jobsubjobid": jobID
+        "jobsubjobid": '"' + jobID + '"'
       }));
     })  
   }

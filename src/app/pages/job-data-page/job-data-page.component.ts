@@ -43,6 +43,8 @@ export class JobDataPageComponent extends LoadingComponent implements OnInit {
 
   pullPageData() {
     this.isLoaded = false;
+    this.notFound = false
+    this.serverError = false;
 
     this.api.getJobDetails(this.id)
       .then((data) => {
